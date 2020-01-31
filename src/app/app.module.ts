@@ -11,7 +11,9 @@ import { CommonModule} from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { PostfilterPipe } from './postfilter.pipe';
-
+import {MatProgressSpinnerModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { from } from 'rxjs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,9 @@ import { PostfilterPipe } from './postfilter.pipe';
     HttpClientModule,
     FormsModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

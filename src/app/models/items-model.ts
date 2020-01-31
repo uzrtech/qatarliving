@@ -10,8 +10,12 @@ export var Item : Item ={
     hasType:true,
     categories:[
         {
-            name:"For Sale",
-            subcategory: ["Villa", "Apparment", "Shared"]
+            name:"Clothing",
+            subcategory: ["Jewelry", "Clothing"]
+        },
+        {
+            name:"Accessories",
+            subcategory: ["Mobile Phones", "Tablets"]
         }
     ],
     type:["Accessories","Mobile Phones","Furniture","Electronics"],

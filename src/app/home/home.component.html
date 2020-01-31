@@ -86,6 +86,7 @@
                 <a href="#" class="show-options"> More options</a>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -94,6 +95,7 @@
       <!-- Property Section Start -->
       <section class="property section-padding">
         <div class="container">
+          
           <div class="row">
             <div class="col-12">
               <div class="section-title-header text-center">
@@ -101,7 +103,8 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row" *ngIf="loading" style="justify-content: center;" ><mat-spinner></mat-spinner></div>
+          <div class="row" *ngIf="!loading">
             <div *ngFor="let _post of Posts | postfilter: CategoryFilter : 'category' : CategoryFilterr :typeFilter " class="col-lg-4 col-md-6 col-xs-12">
               <div class="property-main">
                 <div class="property-wrap">

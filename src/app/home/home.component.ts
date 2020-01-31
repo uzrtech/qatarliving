@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../home.service';
+import { Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,9 @@ import { HomeService } from '../home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  loading= true;
   Posts;
+  PostsSub :Subscription;
   Categories;
   SubCategories;
   Selected_Category;
@@ -23,11 +26,7 @@ export class HomeComponent implements OnInit {
     this.HomeService.GetCategories().subscribe(Cats=>{
       this.Categories = Cats.categories;
     })
-    this.HomeService.GetPosts().subscribe(_posts=>{
-      this.Posts = _posts.posts;
-      console.log(this.Posts);
-      
-    })
+    this.PostsSub = this.HomeService.GetPosts().subscribe(_posts=>{this.Posts=_posts;this.loading=false});
   }
   CategoryChange(index){
     if(index==0){this.CategoryFilter=null;return};

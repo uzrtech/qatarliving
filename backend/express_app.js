@@ -60,10 +60,10 @@ app.use('/uploads', express.static(path.join('uploads')));
 app.use(express.static(path.join(__dirname,'public')));
 
 // Database Connection
-const localdb ="mongodb://localhost:27017/qatarlivings";
-const onlinedb="mongodb+srv://hamza:mongopassword@cluster0-t5iqe.mongodb.net/qatarliving?retryWrites=true&w=majority";
+const l ="mongodb://localhost:27017/qatarlivings";
+const o="mongodb+srv://hamza:mongopassword@cluster0-t5iqe.mongodb.net/qatarliving?retryWrites=true&w=majority";
 
-mongoose.connect(onlinedb, { useNewUrlParser:true, useFindAndModify: false, useCreateIndex:true}).
+mongoose.connect(o, { useNewUrlParser:true, useFindAndModify: false, useCreateIndex:true}).
 then(()=>{console.log("Mongo Connected")})
 .catch((err)=>{console.log("Mongo Connection Failed --"+err )});
 
