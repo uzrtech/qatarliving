@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Item} from '../models/items-model';
-import {Property} from '../models/property-model';
-import {Vehicle} from '../models/vehicle-model';
 import { HomeService} from '../home.service';
 @Component({
   selector: 'app-post',

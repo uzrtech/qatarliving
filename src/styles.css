@@ -285,8 +285,6 @@ input{
     }
     
 }
-
-
 .price-field #edit-price-min {
     display: inline-block;
     float: left;
@@ -299,7 +297,6 @@ input{
     border: 1px solid rgba(255,255,255,0.5);
     color: #FFF;
 }
-
 .price-field #edit-price-max {
     display: inline-block;
     float: left;
@@ -310,11 +307,6 @@ input{
     color: #FFF;
     padding: 5px;
 }
-
-
-
-
-
 
 /*Search Plugin Style ================================*/
 
@@ -366,9 +358,6 @@ input{
      #classified_search_form .select2-container--default .select2-selection--single .select2-selection__rendered{
         line-height: 34px;
      }
-
-     
-   
     .qataryou.search-wrapper .form-control,
     .qataryou.search-wrapper .select2-container--default .select2-selection--multiple{
         background-color: transparent;
@@ -376,44 +365,34 @@ input{
         padding: 6px 7px;
         border-radius: 0;
     }
-
     .qataryou.search-wrapper .select2-container--default .select2-selection--multiple{
         padding: 0px 12px;
     }
-
     .qataryou.search-wrapper .select2-container--default .select2-search--inline .select2-search__field,
     .qataryou.search-wrapper .select2-container--default .select2-search--inline .select2-search__field::placeholder{
         /*color: #fff;*/
     }
-
     .qataryou.search-wrapper .select2-container--default .select2-selection--single{
         background-color: transparent;
     }
-
     .qataryou.search-wrapper .select2-container--default .select2-selection--single .select2-selection__placeholder,
     .qataryou.search-wrapper .select2-container--default .select2-selection--single .select2-selection__rendered{
         /*color: #fff;*/
-    
     }
-
     .qataryou.search-wrapper h5{
         color: #000;
     }
-
     .qataryou.search-wrapper input[type=submit],
     .qataryou.search-wrapper button{
         border: 1px solid rgb(225, 225, 225);
         background: transparent;
         /*color: #fff;*/
-        
     }
-
     .qataryou.search-wrapper .select2-container--default .select2-selection--multiple .select2-selection__choice{
        background-color: #fff;
        border: 1px solid #ffffff;
        color: #5d5d5d;
     }
-
     .search-btn.infasters{
         /*position: absolute;*/
       bottom: 19px;
@@ -423,32 +402,24 @@ input{
       margin-left: 5px;
       padding: 0px 20px;
     }
-
     #classified_search_form .button-wrapper{
         position: absolute;
         bottom: 10px;
         right: 10px;
         text-align: right;
     }
-
     #classified_search_form .select2-container--default .select2-selection--single .select2-selection__arrow b{
         /*border-color: #fff transparent transparent transparent;*/
     }
-
     #classified_search_form .select2-container--default .select2-selection--single .select2-selection__clear{
             margin-right: 10px;
     }
-    
     @media only screen and (min-width: 992px)
 {
-    
     .qataryou.search-wrapper {
-        
         /*height: 185px;*/
-      
     }
 }
-
 @media only screen and (max-width: 991px)
 {
     
@@ -460,15 +431,12 @@ input{
 
 
 }
-
-
 @media only screen and (min-width: 768px)
 {
     .b-filter[data-filter-id=search] {
     margin-top: 30px;
 }
 }
-
 /*Search Plugin Style ================================*/
 
 .b-header.fixed-for-mobile .b-header--el-aside-bottom{
@@ -480,24 +448,17 @@ input{
 .b-header--el-add-post-button-label{
     font-size: 16px;
 }
-
-
-
 /*Sidebar*/
-
 .b-side-menu::-webkit-scrollbar-thumb {
     background: #9f1a65;
     border-radius: 50px;
 }
-
 .b-side-menu::-webkit-scrollbar {
     width: 3px;
 }
-
 .b-side-menu::-webkit-scrollbar-track {
     background: #DDD;
 }
-
 .b-side-menu {
     width: 0;
     position: fixed;
@@ -517,26 +478,20 @@ input{
  .b-side-menu.opened {
       width: 270px;
   }
-
-
   .b-side-menu--el-block {
     position: relative;
 }
-
 .b-side-menu--el-block {
     width: 270px;
 }
-
 .b-side-menu--el-block.header {
     padding: 15px;
 }
-
 .b-side-menu--el-block.actions {
     padding: 10px;
     border-top: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
 }
-
 .b-side-menu--el-sections-item:not(:first-of-type) {
     margin-top: 10px;
     padding-left: 5px;
@@ -545,25 +500,15 @@ input{
 #sidebar-menu-btn{
     cursor: pointer;
 }
-
-/*@media only screen and (min-width: 768px)
-{
-    .b-side-menu--el-block.sections {
-        padding: 15px 20px;
-    }
-}*/
-
 .b-side-menu--el-block.sections {
         padding: 15px 20px;
     }
-
 @media only screen and (min-width: 768px)
 {
     .b-side-menu--el-block.sections:not(:last-of-type) {
         border-bottom: 1px solid #DDD;
     }
 }
-
 .b-side-menu--el-close {
     float: left;
     display: block;
@@ -572,7 +517,6 @@ input{
     outline: none !important;
     color: inherit;
 }
-
 .b-side-menu--el-block:after {
     clear: both;
 }
@@ -580,8 +524,6 @@ input{
     content: " ";
     display: table;
 }
-
-
 .b-side-menu--el-action {
     width: 48%;
     font-size: 14px;
