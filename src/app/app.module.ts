@@ -8,7 +8,7 @@ import { CommonModule} from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { PostfilterPipe } from './postfilter.pipe';
-import {MatProgressSpinnerModule} from '@angular/material';
+import {MatProgressSpinnerModule, MatExpansionModule, MatFormFieldModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -22,10 +22,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule, MatFormFieldModule,
     CommonModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule,
+    MatProgressSpinnerModule,MatExpansionModule,
     BrowserAnimationsModule
   ],
   providers: [],
