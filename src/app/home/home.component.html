@@ -43,44 +43,7 @@
               </div>
               
             </div>
-            <div class="row range-slider option-hide" >
-              <div class="col-lg-3 col-md-6 col-xs-12">
-                <div class="search-category-container">
-                  <label class="styled-select">
-                    <select class="classic">
-                      <option>All Area</option>
-                      <option>San Jose</option>
-                      <option>Salt Lake City</option>
-                      <option>Las Vegas</option>
-                      <option>Boston</option>
-                      <option>Tampa</option>
-                      <option>Orlando</option>
-                    </select>
-                  </label>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-xs-12">
-                  <div class="search-category-container">
-                    <label class="styled-select">
-                      <select class="classic">
-                        <option>Bedrooms</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>                              
-                        <option>8</option>
-                      </select>
-                    </label>
-                  </div>
-                </div>
-              <div class="col-lg-6 col-md-12 col-xs-12">
-                <!-- Page contents -->
-                <input type="text" id="range" value="" name="range" />
-              </div>
-            </div>
+            
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                 <mat-accordion>
@@ -90,6 +53,65 @@
                        + More Options
                       </mat-panel-title>
                     </mat-expansion-panel-header>
+                    
+                    
+                    <div class="row range-slider" >
+                      <div *ngIf="Selected_Category && Selected_Category.city" class="col-lg-3 col-md-6 col-xs-12">
+                        <div class="search-category-container">
+                          <label class="styled-select">
+                            <select class="classic">
+                              <option>All Cities</option>
+                              <option>San Jose</option>
+                            </select>
+                          </label>
+                        </div>
+                      </div>
+                      <div *ngIf="Selected_Category && Selected_Category.bedrooms" class="col-lg-3 col-md-6 col-xs-12">
+                          <div class="search-category-container">
+                            <label class="styled-select">
+                              <select class="classic">
+                                <option>Rooms</option>
+                                <option>1</option>
+                                <option>2</option>                           
+                                <option>3</option>                           
+                                <option>4</option>                           
+                                <option>5</option>                           
+                                <option>8</option>
+                              </select>
+                            </label>
+                          </div>
+                      </div>
+                      <div *ngIf="Selected_Category && Selected_Category.make" class="col-lg-3 col-md-6 col-xs-12">
+                        <div class="search-category-container">
+                          <label class="styled-select">
+                            <select class="classic">
+                              <option>Rooms</option>
+                              <option>1</option>
+                              <option>2</option>                           
+                              <option>3</option>                           
+                              <option>4</option>                           
+                              <option>5</option>                           
+                              <option>8</option>
+                            </select>
+                          </label>
+                        </div>
+                    </div>
+                    <div *ngIf="Selected_Category && Selected_Category.year" class="col-lg-3 col-md-6 col-xs-12">
+                      <div class="search-category-container">
+                        <label class="styled-select">
+                          <select class="classic">
+                            <option>Rooms</option>
+                            <option>1</option>
+                            <option>2</option>                           
+                            <option>3</option>                           
+                            <option>4</option>                           
+                            <option>5</option>                           
+                            <option>8</option>
+                          </select>
+                        </label>
+                      </div>
+                  </div>
+                    </div>
                 
                   </mat-expansion-panel>
                 </mat-accordion>

@@ -7,6 +7,10 @@ const PostSchema = mongoose.Schema({
     category: {type:String},
     subcategory: {type:String},
     city:{type:String},
+    brand:{type:String},
+    year:{type:String},
+    make:{type:String},
+    bedrooms:{type:String},
     price :{ type : String},
     image :{ type : String},
     date: {type: Date}

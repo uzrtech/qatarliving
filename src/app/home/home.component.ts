@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
   CategoryChange(index){
     if(index==0){this.CategoryFilter=null;return};
     this.Selected_Category =this.Categories[index-1];
+    console.log(this.Selected_Category);
+    
     this.CategoryFilter=this.Selected_Category.name;
     this.CategoryFilterr=null;
     this.SubCategories= this.Categories[index-1].cat;

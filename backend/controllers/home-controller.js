@@ -5,8 +5,10 @@ const date = new Date();
 const Cat = require('../models/category-model');
 
 exports.AddPost = (req ,res ,next)=>{
-  var reqbody = req.body;
-  console.log(req.body);
+  if(req.file){console.log("file found");
+  }
+  var reqbody = req.body.data;
+  console.log(reqbody);
   var post = new Post({
     title: reqbody.title,
     des:reqbody.des,
@@ -17,10 +19,10 @@ exports.AddPost = (req ,res ,next)=>{
     image: reqbody.city,
     price: reqbody.price,
   })
-      post.save().then((_appointment)=>{
-        console.log(_appointment);
-        res.status(200).json({message:"post Done"});
-      })
+      // post.save().then((_appointment)=>{
+      //   console.log(_appointment);
+      //   res.status(200).json({message:"post Done"});
+      // })
 }
 exports.Categories =  (req ,res)=>{
   Cat.find({},(err, cats)=>{

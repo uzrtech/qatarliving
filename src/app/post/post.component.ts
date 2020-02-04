@@ -8,6 +8,13 @@ import { HomeService} from '../home.service';
 export class PostComponent implements OnInit {
 
   constructor(private homeService: HomeService) { }
+  states = ['Arizona','California','Colorado','New York','Pennsylvania',
+  ];
+
+  fileData: File = null;
+  previewUrl:any = null;
+  fileUploadProgress: string = null;
+  uploadedFilePath: string = null;
 
   EMessage="";
   posted=false;
@@ -49,11 +56,25 @@ export class PostComponent implements OnInit {
       subcategory:this.Selected_SubCategory.name,
       type:this.type
     };
-    this.homeService.AddPost(Object.assign(values,formValues))
+    console.log(Object.assign(values,formValues))
+    this.homeService.AddPost((Object.assign(values,formValues)),this.fileData)
     .subscribe(val=>{this.posted=true;}
     )
     }
-    
   }
-
+  fileProgress(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
+    var mimeType = this.fileData.type;
+    if (mimeType.match(/image\/*/) == null) {
+    return;
+    }
+    var reader = new FileReader();      
+    reader.readAsDataURL(this.fileData); 
+    reader.onload = (_event) => { 
+    this.previewUrl = reader.result; 
+  }
+}
+preview() {
+  
+}
 }
