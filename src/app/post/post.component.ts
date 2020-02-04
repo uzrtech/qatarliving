@@ -56,9 +56,10 @@ export class PostComponent implements OnInit {
       subcategory:this.Selected_SubCategory.name,
       type:this.type
     };
-    console.log(Object.assign(values,formValues))
+    console.log(Object.assign(values,formValues));
     this.homeService.AddPost((Object.assign(values,formValues)),this.fileData)
-    .subscribe(val=>{this.posted=true;}
+    .subscribe(val=>{this.posted=true; console.log("posted="+val);
+    }
     )
     }
   }
@@ -73,8 +74,5 @@ export class PostComponent implements OnInit {
     reader.onload = (_event) => { 
     this.previewUrl = reader.result; 
   }
-}
-preview() {
-  
 }
 }
