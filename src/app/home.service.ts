@@ -14,8 +14,8 @@ export class HomeService {
   vehicle = Vehicle;
   PostSub = new Subject<string>();
   Posts;
-  lc="http://localhost:8080";
-  //lc="";
+  //lc="http://localhost:8080";
+  lc="";
 
   constructor(private Http: HttpClient) {
     this.Http.get<{message:string, posts:String}>(this.lc+'/api/posts').subscribe(_posts=>{
