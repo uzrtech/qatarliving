@@ -122,6 +122,20 @@
                               </label>
                             </div>
                         </div>
+                        <div *ngIf="Selected_Category && Selected_Category.washrooms" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                          <div class="search-category-container">
+                            <label class="styled-select">
+                              <select name="washrooms" ngModel>
+                                <option value="" disabled>Washrooms</option>
+                                <option>1</option>
+                                <option>2</option>                           
+                                <option>3</option>                           
+                                <option>4</option>                           
+                                <option>5</option>   
+                              </select>
+                            </label>
+                          </div>
+                      </div>
                         <div *ngIf="Selected_Category && Selected_Category.make" class="col-lg-3 col-md-6 col-xs-12">
                           <div class="search-category-container">
                             <label class="styled-select">

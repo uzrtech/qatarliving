@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Item } from './models/items-model';
 import { Property } from './models/property-model';
 import { Vehicle } from './models/vehicle-model';
+import {environment} from '../environments/environment';
 import{ Subject} from 'rxjs';
 
 @Injectable({
@@ -14,17 +15,16 @@ export class HomeService {
   vehicle = Vehicle;
   PostSub = new Subject<string>();
   Posts;
-  //lc="http://localhost:8080";
-  lc="";
+  url= environment.baseUrl;
 
   constructor(private Http: HttpClient) {
-    this.Http.get<{message:string, posts:String}>(this.lc+'/api/posts').subscribe(_posts=>{
+    this.Http.get<{message:string, posts:String}>(this.url+'/api/posts').subscribe(_posts=>{
       this.Posts=_posts.posts;
       this.PostSub.next(this.Posts);
     })
     
    }
-  GetCategories(){ return this.Http.get<{message:string, categories:String}>(this.lc+'/api/categories') }
+  GetCategories(){ return this.Http.get<{message:string, categories:String}>(this.url+'/api/categories') }
   GetPosts(){ return this.PostSub.asObservable(); }
   AddPost(post,file:File){
     const formData = new FormData();
@@ -32,21 +32,13 @@ export class HomeService {
     formData.append('title', post.title);
     formData.append('des', post.des);
     formData.append('price', post.price);
-    formData.append('city', post.city);
-    formData.append('bedrooms', post.bedrooms);
+    if(post.city){formData.append('city', post.city);}
+    if(post.bedrooms){formData.append('bedrooms', post.bedrooms);}
+    if(post.washrooms){formData.append('washrooms', post.washrooms);}    
     formData.append('category', post.category);
     formData.append('subcategory', post.subcategory);
     formData.append('type', post.type);
-    return this.Http.post<{message:string,data:string}>(this.lc+'/api/post',formData);
-  }
-  postWithfile(fileData,uploadedFilePath) {
-    const formData = new FormData();
-      formData.append('file', fileData);
-      this.Http.post<{formData:string}>('url/to/your/api', formData)
-        .subscribe(res => {
-          uploadedFilePath = res.formData;
-          alert('SUCCESS !!');
-        })
+    return this.Http.post<{message:string,data:string}>(this.url+'/api/post',formData);
   }
   
 }

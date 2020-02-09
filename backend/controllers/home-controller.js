@@ -9,6 +9,9 @@ exports.AddPost = (req ,res ,next)=>{
     console.log("file found");
   }
   var reqbody = req.body;
+  console.log("req.body");
+  console.log(req.body);
+  
   var post = new Post({
     title: reqbody.title,
     des:reqbody.des,
@@ -17,8 +20,11 @@ exports.AddPost = (req ,res ,next)=>{
     type: reqbody.type,
     city: reqbody.city,
     bedrooms:reqbody.bedrooms,
+    washrooms:reqbody.washrooms,
     price: reqbody.price,
   })
+  console.log(post);
+
   const url = req.protocol+'://'+req.get("host");
   if (req.file) {
     post.image= url+"/uploads/"+ req.file.filename;

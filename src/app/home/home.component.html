@@ -152,7 +152,9 @@
                     <div class="item-body">
                       <h3 class="property-title"><a href="property.html">{{_post.title}}</a></h3>
                       <div class="adderess">{{_post.des}}</div>
-                      <div class="adderess"><i class="lni-map-marker"></i> Drive Street, Los Angeles, US</div>
+                      <div *ngIf="_post.city" class="adderess"><i class="lni-map-marker mr-1"></i>{{_post.city}}</div>
+                      <div *ngIf="_post.bedrooms" class="adderess"><i class="fa fa-bed mr-1"></i>{{_post.bedrooms}}</div>
+                      <div *ngIf="_post.washrooms" class="adderess"><i class="fa fa-shower mr-1"></i>{{_post.washrooms}}</div>
                       <div class="pricin-list">
                         <div class="property-price">
                           <span>${{_post.price}}</span>

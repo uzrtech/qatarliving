@@ -6,10 +6,6 @@ const checkAuth = require('./routerGuard/check-auth');
 const app = express();
 const Cat = require('./models/category-model');
 
-
-
-
-
 // Include controllers from Controllers folder
 const authController = require('./controllers/auth-controller');
 const homeController = require('./controllers/home-controller');
@@ -32,8 +28,7 @@ var upload = multer({ storage: storage });
 
 
 
-// var catss = new Cat(
-//   {
+// var catss = new Cat({
 //     name : "Items",
 //     cat:[{
 //       name:"Clothing",
@@ -42,13 +37,8 @@ var upload = multer({ storage: storage });
 //       name:"Accessories",
 //       sub:["Mobile Phones", "Tablets"]
 //     }]
-//   }
-// );
+//   });
 // catss.save();
-
-
-
-
 
 
 // Body Parser to get data from Request from Front End

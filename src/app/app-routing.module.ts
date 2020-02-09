@@ -5,7 +5,7 @@ import {PostComponent} from './post/post.component';
 const routes: Routes = [
   
   {path:"post", component:PostComponent},
-  {path :'auth', loadChildren: () => import(`./auth/auth.module`).then(m => m.AuthModule)},
+  {path :'auth', loadChildren: () => import(`./auth/loginn/loginn.component`).then(m => m.LoginnComponent)},
   {path:"", component:HomeComponent},
 ];
 @NgModule({

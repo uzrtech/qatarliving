@@ -63,6 +63,12 @@ export class PostComponent implements OnInit {
   }
   fileProgress(fileInput: any) {
     this.fileData = <File>fileInput.target.files[0];
+    if(this.fileData.size > 2000000)
+    {
+      console.log("Max size of 2 Mb excceded");
+      this.EMessage= 'Max size of 2 Mb excceded';
+      return;
+    }
     var mimeType = this.fileData.type;
     if (mimeType.match(/image\/*/) == null) {
     return;

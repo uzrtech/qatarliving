@@ -11,6 +11,7 @@ const PostSchema = mongoose.Schema({
     year:{type:String},
     make:{type:String},
     bedrooms:{type:String},
+    washrooms:{type:String},
     price :{ type : String},
     image :{ type : String},
     date: {type: Date}
