@@ -15,7 +15,6 @@ export class PostComponent implements OnInit {
   previewUrl:any = null;
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
-
   EMessage="";
   posted=false;
   Categories;
@@ -33,6 +32,7 @@ export class PostComponent implements OnInit {
     if(index==0){this.Selected_Category=null;return};
     this.Selected_Category =this.Categories[index-1];
     this.SubCategories= this.Categories[index-1].cat;
+    this.Selected_SubCategory= null;
   }
   SubCategoryChange(index){
     this.Selected_SubCategory= this.Selected_Category.cat[index-1];
@@ -59,9 +59,7 @@ export class PostComponent implements OnInit {
     console.log(Object.assign(values,formValues));
     this.homeService.AddPost((Object.assign(values,formValues)),this.fileData)
     .subscribe(val=>{this.posted=true; console.log("posted="+val);
-    }
-    )
-    }
+    })}
   }
   fileProgress(fileInput: any) {
     this.fileData = <File>fileInput.target.files[0];

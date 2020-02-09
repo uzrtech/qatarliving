@@ -14,8 +14,8 @@ export class HomeService {
   vehicle = Vehicle;
   PostSub = new Subject<string>();
   Posts;
-  //lc="http://localhost:8080";
-  lc="";
+  lc="http://localhost:8080";
+  //lc="";
 
   constructor(private Http: HttpClient) {
     this.Http.get<{message:string, posts:String}>(this.lc+'/api/posts').subscribe(_posts=>{
@@ -29,11 +29,16 @@ export class HomeService {
   AddPost(post,file:File){
     const formData = new FormData();
     formData.append('image', file);
-    formData.append('data', post);
-    console.log(formData);
+    formData.append('title', post.title);
+    formData.append('des', post.des);
+    formData.append('price', post.price);
+    formData.append('city', post.city);
+    formData.append('bedrooms', post.bedrooms);
+    formData.append('category', post.category);
+    formData.append('subcategory', post.subcategory);
+    formData.append('type', post.type);
     return this.Http.post<{message:string,data:string}>(this.lc+'/api/post',formData);
   }
-
   postWithfile(fileData,uploadedFilePath) {
     const formData = new FormData();
       formData.append('file', fileData);
