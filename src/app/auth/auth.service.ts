@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router} from '@angular/router'
@@ -6,13 +7,10 @@ import { Subject} from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private Api_Url = "http://localhost:8080";
   private errSub = new Subject<string>();
   private AdminSub = new Subject<string>();
   private admin;
-  
-  //lc="http://localhost:8080";
-  lc="";
+  lc=environment.baseUrl;
   constructor(private Http: HttpClient, private router :Router ) {
     }
   DocterLogin(formData){
@@ -23,6 +21,7 @@ export class AuthService {
       this.router.navigate(['/post']);
     },
      (err)=>{
+       console.log(err);
        this.errSub.next(err.error.message);
      })
   }
