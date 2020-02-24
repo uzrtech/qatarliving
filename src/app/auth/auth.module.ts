@@ -5,6 +5,7 @@ import {RegisterComponent} from './register/register.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import {FormsModule} from '@angular/forms';
 import { LoginnComponent } from './loginn/loginn.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { LoginnComponent } from './loginn/loginn.component';
     AuthComponent,
     RegisterComponent,
     LoginnComponent,
+    AdminloginComponent,
   ],
   imports: [
     CommonModule,

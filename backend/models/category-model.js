@@ -5,7 +5,13 @@ const CategorySchema = mongoose.Schema({
     cat:[ {
         name:{type:String},
         sub:{type: [String]}
-    }]
+    }],
+    extra:{
+        input:{type:[String]}
+    },
+    fields:[
+        {title:{type:String},type:{type:String},icon:{type:String}}
+    ]
 });
 
 module.exports= mongoose.model('Category', CategorySchema, 'Categories');

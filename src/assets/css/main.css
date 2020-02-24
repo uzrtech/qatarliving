@@ -701,8 +701,6 @@ a.back-to-top:hover, a.back-to-top:focus {
   color: #000;
   padding: 0 17px;
   font-weight: 700;
-  margin-top: 20px;
-  margin-bottom: 20px;
   line-height: 40px;
   text-transform: uppercase;
   background: transparent;
@@ -2508,7 +2506,7 @@ select {
   -moz-appearance: none;
   -webkit-appearance: none;
   position: relative;
-  min-height: 45px;
+  min-height: 40px;
   box-shadow: none;
   border: 1px solid #f3f3f3;
   background: #fff;

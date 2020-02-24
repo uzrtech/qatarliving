@@ -1,3 +1,199 @@
+<header id="header-wrap">
+  <!-- Start Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-md-8 col-xs-12">
+          <!-- Start Contact Info -->
+          <ul class="links clearfix">
+            <li><i class="lni-phone-handset"></i>1-800-555-1234</li>
+            <li><i class="lni-envelope"></i> info@example.com</li>
+            <li><a href="#"><i class="lni-map-marker"></i> York Blvd, Los Angeles, US</a></li>
+          </ul>
+          <!-- End Contact Info -->
+        </div>
+        <div class="col-lg-5 col-md-4 col-xs-12">
+          <div class="roof-social float-right">
+            <a class="facebook" href="#"><i class="lni-facebook-filled"></i></a>
+            <a class="twitter" href="#"><i class="lni-twitter-filled"></i></a>
+            <a class="instagram" href="#"><i class="lni-instagram-filled"></i></a>
+            <a class="linkedin" href="#"><i class="lni-linkedin-filled"></i></a>
+          </div>
+          <div class="header-top-right float-right">
+            <a href="/auth" class="header-top-button"><i class="lni-lock"></i> Log In</a> |
+            <a href="/auth/register" class="header-top-button"><i class="lni-pencil"></i> Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Top Bar -->
+
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white"  data-toggle="sticky-onscroll">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <span class="lin-menu"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt=""></a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="main-navbar">
+        <ul class="navbar-nav mr-auto w-100 justify-content-center">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="">
+              Home <i class="fa fa-angle-down"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggl" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Listing <i class="fa fa-angle-down"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a *ngFor="let cat of Categories" class="dropdown-item" href="">{{cat.name}}</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggl" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gallery <i class="fa fa-angle-down"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="portfolio-2.html">2 Columns Gallery</a>
+              <a class="dropdown-item" href="portfolio-3.html">3 Columns Gallery</a>
+              <a class="dropdown-item" href="portfolio-4.html">4 Columns Gallery</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggl" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Pages <i class="fa fa-angle-down"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="about.html">About Us</a>
+              <a class="dropdown-item" href="agents.html">Agents</a>
+              <a class="dropdown-item" href="rent.html">For Rent</a>
+              <a class="dropdown-item" href="sale.html">For Sale</a>
+              <a class="dropdown-item" href="pricing.html">Pricing Tables</a>
+              <a class="dropdown-item" href="dashboard.html">Dashboard</a>
+              <a class="dropdown-item" href="submit-property.html">Submission Form</a>
+              <a class="dropdown-item" href="faq.html">FAQ</a>
+              <a class="dropdown-item" href="testimonials.html">Testimonials</a>
+              <a class="dropdown-item" href="typography.html">Typography</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggl" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Blog <i class="fa fa-angle-down"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="blog.html">Blog Page</a>
+              <a class="dropdown-item" href="single-blog.html">Blog Single Page</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">
+              Contact Us
+            </a>
+          </li>
+          <li class="nav-item ml-1 active">
+              <a class="nav-link" href="/post">
+                Add Post 
+              </a>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Start -->
+    <ul class="mobile-menu">
+      <li>
+        <a class="active" href="index.html">
+        Home
+        </a>
+        <ul class="dropdown">
+          <li>
+            <a class="active" href="index.html">
+              Home V1
+            </a>
+          </li>  
+          <li>
+            <a href="index-2.html">
+              Home V2
+            </a>
+          </li>   
+          <li>
+            <a href="index-3.html">
+              Home V3
+            </a>
+          </li> 
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          Listing
+        </a>
+        <ul class="dropdown">
+          <li><a href="listing.html">Simple Listing</a></li>
+          <li><a href="grid-listing.html">Grid Listing</a></li>
+          <li><a href="listing-map.html">List with Google Map</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Property</a>
+         <ul class="dropdown">
+          <li><a href="property.html">Default- Variation</a></li>
+          <li><a href="single-property.html">Single Property</a></li>
+          <li><a href="full-gallery.html">Full Width Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          Gallery
+        </a>
+        <ul class="dropdown">
+          <li><a href="portfolio-2.html">2 Columns Gallery</a></li>
+          <li><a href="portfolio-3.html">3 Columns Gallery</a></li>
+          <li><a href="portfolio-4.html">4 Columns Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Pages</a>
+        <ul class="dropdown">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="rent.html">For Rent</a></li>
+          <li><a href="sale.html">For Sale</a></li>
+          <li><a href="pricing.html">Pricing Tables</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="submit-property.html">Submission Form</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="typography.html">Typography</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Blog</a>
+        <ul class="dropdown">
+          <li><a href="blog.html">Blog Page</a></li>
+          <li><a href="single-blog.html">Blog Single Page</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="contact.html">
+        Contact Us
+        </a>
+      </li>
+    </ul>
+    <!-- Mobile Menu End -->
+  </nav>
+  <!-- Navbar End -->
+  <div class="clearfix"></div>
+</header>
+
+
+
 <div class="search-container">
     <div class="container">
       <div class="row">
@@ -86,107 +282,20 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 text-left">
-                  <mat-accordion>
+                  <mat-accordion *ngIf="Selected_Category">
                     <mat-expansion-panel>
                       <mat-expansion-panel-header>
                         <mat-panel-title>
                          + More Options
                         </mat-panel-title>
                       </mat-expansion-panel-header>
-                      
-                      
-                      <div class="row range-slider" >
-                        <div *ngIf="Selected_Category && Selected_Category.city" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                          <div class="search-category-container">
-                            <label class="styled-select">
-                              <select name="city" ngModel>
-                                <option value="" disabled>Choose a state</option>
-                                <option *ngFor="let state of states" [ngValue]="state">
-                                  {{ state }}
-                                </option>
-                              </select>
-                            </label>
-                          </div>
+                      <div class="row">
+                        <div *ngFor="let f of Selected_Category.fields" class="col-lg-4 col-md-4 col-sm-6 ">
+                        <input ngModel [name]="f.title" [type]="f.type" [placeholder]="f.title" class="form-control">
                         </div>
-                        <div *ngIf="Selected_Category && Selected_Category.bedrooms" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <div class="search-category-container">
-                              <label class="styled-select">
-                                <select name="bedrooms" ngModel>
-                                  <option value="" disabled>Rooms</option>
-                                  <option>1</option>
-                                  <option>2</option>                           
-                                  <option>3</option>                           
-                                  <option>4</option>                           
-                                  <option>5</option>   
-                                </select>
-                              </label>
-                            </div>
-                        </div>
-                        <div *ngIf="Selected_Category && Selected_Category.washrooms" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                          <div class="search-category-container">
-                            <label class="styled-select">
-                              <select name="washrooms" ngModel>
-                                <option value="" disabled>Washrooms</option>
-                                <option>1</option>
-                                <option>2</option>                           
-                                <option>3</option>                           
-                                <option>4</option>                           
-                                <option>5</option>   
-                              </select>
-                            </label>
-                          </div>
                       </div>
-                        <div *ngIf="Selected_Category && Selected_Category.make" class="col-lg-3 col-md-6 col-xs-12">
-                          <div class="search-category-container">
-                            <label class="styled-select">
-                              <select name="make" class="classic" ngModel>
-                                <option value="" disabled>Make</option>
-                                <option>Audi</option>
-                                <option>Bently</option>                           
-                                <option>Ferrari</option>                           
-                                <option>Fiat</option>                           
-                                <option>Honda</option>                           
-                                <option>Rover</option>
-                              </select>
-                            </label>
-                          </div>
-                      </div>
-                      <div *ngIf="Selected_Category && Selected_Category.year" class="col-lg-3 col-md-6 col-xs-12">
-                        <div class="search-category-container">
-                          <label class="styled-select">
-                            <select name="year" class="classic" >
-                              <option value="" disabled>Year</option>
-                              <option>2011</option>
-                              <option>2012</option>                           
-                              <option>2013</option>                           
-                              <option>2014</option>                           
-                              <option>2015</option>                           
-                              <option>2016</option>
-                              <option>2017</option>
-                              <option>2018</option>
-                              <option>2019</option>
-                              <option>2020</option>
-                            </select>
-                          </label>
-                        </div>
-                    </div>
-                    <div *ngIf="Selected_Category && Selected_Category.brand" class="col-lg-3 col-md-6 col-xs-12">
-                      <div class="search-category-container">
-                        <label class="styled-select">
-                          <select name="brand" class="classic">
-                            <option value="" disabled>Brand</option>
-                            <option>Samsung</option>
-                            <option>Nokia</option>                           
-                            <option>Lenono</option>    
-                          </select>
-                        </label>
-                      </div>
-                  </div>
-                      </div>
-                  
                     </mat-expansion-panel>
                   </mat-accordion>
-                  
                 </div>
                 <div class="col-lg-12 col-md-12 col-xs-12">
                   <div class="text-right mt-3 btn-section">
@@ -197,19 +306,108 @@
              </div>
             </div>
         
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-xs-12">
-            <div *ngIf="EMessage!=''"  class="alert m-1 alert-danger alert-dismissible fade show">
-              {{EMessage}}
-             <button type="button" class="close" (click)="EMessage=''">&times;</button>
-           </div>
-           <div *ngIf="posted"  class="alert m-1 alert-success alert-dismissible fade show">
-            Post Added
-           <button type="button" class="close" (click)="posted=false">&times;</button>
-         </div>
-          </div>
-        </div>
+        
     </form>
       </div>
     </div>
   </div>
+
+
+
+  <app-footer></app-footer>
+
+
+
+
+
+
+
+<!-- 
+  <div class="row range-slider" >
+    <div *ngIf="Selected_Category && Selected_Category.city" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <div class="search-category-container">
+        <label class="styled-select">
+          <select name="city" ngModel>
+            <option value="" disabled>Choose a state</option>
+            <option *ngFor="let state of states" [ngValue]="state">
+              {{ state }}
+            </option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div *ngIf="Selected_Category && Selected_Category.bedrooms" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="search-category-container">
+          <label class="styled-select">
+            <select name="bedrooms" ngModel>
+              <option value="" disabled>Rooms</option>
+              <option>1</option>
+              <option>2</option>                           
+              <option>3</option>                           
+              <option>4</option>                           
+              <option>5</option>   
+            </select>
+          </label>
+        </div>
+    </div>
+    <div *ngIf="Selected_Category && Selected_Category.washrooms" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <div class="search-category-container">
+        <label class="styled-select">
+          <select name="washrooms" ngModel>
+            <option value="" disabled>Washrooms</option>
+            <option>1</option>
+            <option>2</option>                           
+            <option>3</option>                           
+            <option>4</option>                           
+            <option>5</option>   
+          </select>
+        </label>
+      </div>
+  </div>
+    <div *ngIf="Selected_Category && Selected_Category.make" class="col-lg-3 col-md-6 col-xs-12">
+      <div class="search-category-container">
+        <label class="styled-select">
+          <select name="make" class="classic" ngModel>
+            <option value="" disabled>Make</option>
+            <option>Audi</option>
+            <option>Bently</option>                           
+            <option>Ferrari</option>                           
+            <option>Fiat</option>                           
+            <option>Honda</option>                           
+            <option>Rover</option>
+          </select>
+        </label>
+      </div>
+  </div>
+  <div *ngIf="Selected_Category && Selected_Category.year" class="col-lg-3 col-md-6 col-xs-12">
+    <div class="search-category-container">
+      <label class="styled-select">
+        <select name="year" class="classic" >
+          <option value="" disabled>Year</option>
+          <option>2011</option>
+          <option>2012</option>                           
+          <option>2013</option>                           
+          <option>2014</option>                           
+          <option>2015</option>                           
+          <option>2016</option>
+          <option>2017</option>
+          <option>2018</option>
+          <option>2019</option>
+          <option>2020</option>
+        </select>
+      </label>
+    </div>
+</div>
+<div *ngIf="Selected_Category && Selected_Category.brand" class="col-lg-3 col-md-6 col-xs-12">
+  <div class="search-category-container">
+    <label class="styled-select">
+      <select name="brand" class="classic">
+        <option value="" disabled>Brand</option>
+        <option>Samsung</option>
+        <option>Nokia</option>                           
+        <option>Lenono</option>    
+      </select>
+    </label>
+  </div>
+</div>
+  </div> -->

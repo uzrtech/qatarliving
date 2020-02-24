@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService} from '../home.service';
+import { log } from 'util';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -25,7 +26,7 @@ export class PostComponent implements OnInit {
   Selected_SubCategory;
   ngOnInit() {
     this.homeService.GetCategories().subscribe(Cats=>{
-      this.Categories = Cats.categories;
+      this.Categories = Cats.data;
     })
   }
   CategoryChange(index){
@@ -50,16 +51,23 @@ export class PostComponent implements OnInit {
     else if(values.price==""){this.EMessage="Enter Price"}
     else{
       this.EMessage="";
-      var formValues=
-    {
-      category:this.Selected_Category.name,
-      subcategory:this.Selected_SubCategory.name,
-      type:this.type
-    };
-    console.log(Object.assign(values,formValues));
-    this.homeService.AddPost((Object.assign(values,formValues)),this.fileData)
-    .subscribe(val=>{this.posted=true; console.log("posted="+val);
-    })}
+      var fields=[];
+      var data=
+      {
+        category:this.Selected_Category.name,
+        subcategory:this.Selected_SubCategory.name,
+        type:this.type,
+        title:values.title,
+        des:values.des,
+        price:values.price,
+        fields:[]
+      }
+      this.Selected_Category.fields.forEach(element => {
+        data.fields.push({title:element.title,icon:element.icon,value:values[element.title]})
+      });
+     this.homeService.AddPost(data,this.fileData)
+     .subscribe(val=>{this.posted=true; console.log("posted="+val);})
+  }
   }
   fileProgress(fileInput: any) {
     this.fileData = <File>fileInput.target.files[0];

@@ -24,21 +24,21 @@ export class HomeService {
     })
     
    }
-  GetCategories(){ return this.Http.get<{message:string, categories:String}>(this.url+'/api/categories') }
+  GetCategories(){ return this.Http.get<{message:string, data:String}>(this.url+'/api/categories') }
   GetPosts(){ return this.PostSub.asObservable(); }
   AddPost(post,file:File){
-    const formData = new FormData();
-    formData.append('image', file);
-    formData.append('title', post.title);
-    formData.append('des', post.des);
-    formData.append('price', post.price);
-    if(post.city){formData.append('city', post.city);}
-    if(post.bedrooms){formData.append('bedrooms', post.bedrooms);}
-    if(post.washrooms){formData.append('washrooms', post.washrooms);}    
-    formData.append('category', post.category);
-    formData.append('subcategory', post.subcategory);
-    formData.append('type', post.type);
-    return this.Http.post<{message:string,data:string}>(this.url+'/api/post',formData);
+    // const formData = new FormData();
+    // formData.append('image', file);
+    // formData.append('title', post.title);
+    // formData.append('des', post.des);
+    // formData.append('price', post.price);
+    // if(post.city){formData.append('city', post.city);}
+    // if(post.bedrooms){formData.append('bedrooms', post.bedrooms);}
+    // if(post.washrooms){formData.append('washrooms', post.washrooms);}    
+    // formData.append('category', post.category);
+    // formData.append('subcategory', post.subcategory);
+    // formData.append('type', post.type);
+    return this.Http.post<{message:string,data:string}>(this.url+'/api/post',post);
   }
   
 }

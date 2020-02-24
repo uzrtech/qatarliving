@@ -1,6 +1,6 @@
 .btn-primary{
-    background-color: #0dcdbd;
-    border-color: #0dcdbd;
+    background-color: #0dcdbd !important;
+    border-color: #0dcdbd !important;
 }
 
 .mat-expansion-panel:not([class*=mat-elevation-z]){

@@ -10,37 +10,43 @@ exports.AddPost = (req ,res ,next)=>{
   }
   var reqbody = req.body;
   console.log("req.body");
-  console.log(req.body);
-  
+  console.log(req.body.fields.fields);
+
   var post = new Post({
     title: reqbody.title,
     des:reqbody.des,
     category: reqbody.category,
     subcategory: reqbody.subcategory,
     type: reqbody.type,
-    city: reqbody.city,
-    bedrooms:reqbody.bedrooms,
-    washrooms:reqbody.washrooms,
+    fields: req.body.fields,
     price: reqbody.price,
   })
-  console.log(post);
-
   const url = req.protocol+'://'+req.get("host");
   if (req.file) {
     post.image= url+"/uploads/"+ req.file.filename;
   }
   else{ post.image=req.protocol+'://'+req.get("host")+"/uploads/default.jpg"}
-
       post.save().then((_post)=>{
         console.log(_post);
         res.status(200).json({message:"post Done"});
+      }).catch(err=>{console.log(err);
       })
 }
 exports.Categories =  (req ,res)=>{
   Cat.find({},(err, cats)=>{
-    res.status(200).json({message:"Categories", categories:cats });
+    res.status(200).json({message:"Categories", data:cats });
   })
 };
+
+
+exports.CategoriesUpdate =  (req ,res)=>{
+  Cat.findByIdAndUpdate(req.body._id,req.body,(err, cats)=>{
+    if(err){console.log(err);}
+    console.log(cats);
+    res.status(200).json({message:"Categories", data:cats });
+  })
+};
+
 exports.GetPosts =  (req ,res)=>{
   Post.find({},(err, posts)=>{
     res.status(200).json({message:"Posts", posts:posts });

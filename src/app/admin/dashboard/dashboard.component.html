@@ -1,0 +1,176 @@
+
+
+<div class="main-panel">
+    <div class="content">
+        <div class="panel-header bg-primary-gradient">
+            <div class="page-inner py-5">
+                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                    <div>
+                        <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
+                        <h5 class="text-white op-7 mb-2">Free Bootstrap 4 Admin Dashboard</h5>
+                    </div>
+                    <div class="ml-md-auto py-2 py-md-0">
+                        <a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
+                        <a href="#" class="btn btn-secondary btn-round">Add Customer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-inner mt--5">
+            <div class="row mt--2">
+                <div class="col-md-6">
+                    <div class="card full-height">
+                        <div class="card-body">
+                            <div class="card-title">Categories</div>
+                            
+                            <mat-accordion>
+                                <mat-expansion-panel *ngFor="let cate of Categories">
+                                  <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                     <input type="text" [(ngModel)]="cate.name" class="form-control">
+                                     <div *ngIf="loading" class="spinner-border text-secondary" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                      </div>
+                                    </mat-panel-title>
+                                  </mat-expansion-panel-header>
+                                  <mat-accordion>
+                                  <mat-expansion-panel *ngFor="let cat of cate.cat">
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                        <input type="text" [(ngModel)]="cat.name" class="form-control">
+                                      </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div *ngFor="let sub of cat.sub">
+                                        <input type="text" [(ngModel)]="sub" class="form-control ml-3">
+                                            <button (click)="cat.sub.splice(cat.sub.indexOf(sub),1)" type="button" placeholder="Enter value" class="btn btn-link" >
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                                    <button (click)="cate.cat.splice(cate.cat.indexOf(cat),1)" class="btn btn btn-link btn-secondary btn-sm">Delete {{cat.name}}</button>
+                                    <button (click)="cat.sub.push('')" class="btn btn btn-link btn-secondary btn-sm">Add New</button>
+                                  </mat-expansion-panel>
+                                  </mat-accordion>
+                                    <button (click)="Categories.splice(Categories.indexOf(cate),1)" class="btn btn btn-link btn-secondary btn-sm">Delete {{cate.name}}</button>
+                                    <button (click)="addSub(cate.cat)" class="btn btn btn-link btn-secondary btn-sm">Add New</button>
+                                    <button (click)="saveCat(cate)" class="btn btn btn-link btn-primary btn-sm float-right">Save</button>
+                                </mat-expansion-panel>
+
+
+
+
+                                <mat-expansion-panel *ngIf="new" >
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                       <input type="text"   class="form-control">
+                                      </mat-panel-title>
+                                    </mat-expansion-panel-header> 
+                                      <button (click)="new=false" class="btn btn btn-link btn-secondary btn-sm"> cancel</button>
+                                      <button (click)="addSub(cate.cat)" class="btn btn btn-link btn-primary btn-sm">Save</button>
+                                  </mat-expansion-panel>
+
+
+
+                                
+                              </mat-accordion>
+                            <button (click)="new=true" class="btn btn btn-link btn-primary btn-sm right">Add New</button>
+
+
+                        </div>
+                    </div>
+                </div>
+                
+<!-- 
+                <div class="col-md-6">
+                    <div class="card full-height">
+                        <div class="card-body">
+                            <div class="card-title">Extra</div>
+                            
+                            <mat-accordion>
+                                <mat-expansion-panel *ngFor="let cate of Categories">
+                                  <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                     {{cate.name}}
+                                     <div *ngIf="loading" class="spinner-border text-secondary" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                      </div>
+                                    </mat-panel-title>
+                                  </mat-expansion-panel-header>
+                                  <h4 *ngFor="let ext of cate.extra.input"><span class="badge badge-secondary">{{ext}}</span></h4>
+                                  <br>
+                                    <input #extraInput type="text" class="form-control">
+                                    <button (click)="cate.extra.input.push(extraInput.value)" class="btn btn btn-link btn-secondary btn-sm">Add</button>
+                                    <button (click)="saveCats(cate)" class="btn btn btn-link btn-primary btn-sm float-right">Save</button>
+                                </mat-expansion-panel>
+
+
+                              </mat-accordion>
+
+
+                        </div>
+                    </div>
+                </div> -->
+
+
+
+
+                <div class="col-md-6">
+                    <div class="card full-height">
+                        <div class="card-body">
+                            <div class="card-title">Fields</div>
+                            <mat-accordion>
+                                <mat-expansion-panel *ngFor="let cate of Categories">
+                                  <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                     {{cate.name}}
+                                    </mat-panel-title>
+                                  </mat-expansion-panel-header>
+                                  <mat-expansion-panel *ngFor="let field of cate.fields">
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                       {{field.title}}
+                                      </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div class="alert alert-success" role="alert">
+                                      <p>Title: <input type="text" [(ngModel)]="field.title" class="form-control"></p>
+                                      <p> Type: <input type="text" [(ngModel)]="field.type" class="form-control"> </p>
+                                      <p> Icon: <input type="text" [(ngModel)]="field.icon" class="form-control"> </p>
+                                    </div>
+  
+                                  </mat-expansion-panel>
+                                  
+
+                                  <mat-expansion-panel >
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                       Add New
+                                      </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <form  #addForm="ngForm" (ngSubmit)="addField(cate,addForm.value)">
+                                    <input type="text" ngModel name="title" placeholder="Title ; Ex: City" class="form-control">
+                                      <select ngModel name="type" class="form-control">
+                                        <option value="text">Text</option>
+                                        <option value="number">Number</option>
+                                        <option value="option">Option</option>
+                                        <option value="check">Check</option>
+                                      </select>
+                                    <input type="text" ngModel name="icon" placeholder="Icon ; Ex: fa fas-key" class="form-control">
+                                    <button type="submit" class="btn btn-link">Add</button>
+                                    </form>
+                                  </mat-expansion-panel>
+                                  <button (click)="saveCats(cate)" class="btn btn btn-link btn-primary float-right btn-sm">Save</button>
+                                </mat-expansion-panel>
+                              </mat-accordion>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        
+        </div>
+    </div>
+</div>

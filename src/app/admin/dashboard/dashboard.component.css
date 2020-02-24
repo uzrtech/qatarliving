@@ -1,0 +1,17 @@
+input, select{
+    width: auto !important;
+}
+.form-control{
+    display: inline !important;
+    margin: 2px;
+}
+.btn{
+    margin: 5px;
+}
+h4{
+    display: inline;
+    margin: 1px;
+}
+p{
+    margin: 0px !important;
+}

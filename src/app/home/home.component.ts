@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.HomeService.GetCategories().subscribe(Cats=>{
-      this.Categories = Cats.categories;
+      this.Categories = Cats.data;
     })
     this.PostsSub = this.HomeService.GetPosts().subscribe(_posts=>{this.Posts=_posts;this.loading=false});
   }

@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private homeService: HomeService) { }
   ngOnInit() {
     this.homeService.GetCategories().subscribe(Cats=>{
-      this.Categories = Cats.categories;
+      this.Categories = Cats.data;
     })
   }
 }

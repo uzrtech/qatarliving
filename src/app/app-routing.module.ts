@@ -1,3 +1,5 @@
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AdminComponent } from './admin/admin.component';
 import { AuthComponent } from './auth/auth.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -6,6 +8,9 @@ import {PostComponent} from './post/post.component';
 const routes: Routes = [
   
   {path:"post", component:PostComponent},
+  {path:"admin", component:AdminComponent, children:[
+    {path:'', component: DashboardComponent}
+  ]},
   {path :'auth', loadChildren: () => import(`./auth/auth.module`).then(m => m.AuthModule)},
   {path:"", component:HomeComponent},
 ];
