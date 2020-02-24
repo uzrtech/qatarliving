@@ -18,6 +18,8 @@
         </div>
         <div class="page-inner mt--5">
             <div class="row mt--2">
+
+              
                 <div class="col-md-6">
                     <div class="card full-height">
                         <div class="card-body">
@@ -27,7 +29,8 @@
                                 <mat-expansion-panel *ngFor="let cate of Categories">
                                   <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                     <input type="text" [(ngModel)]="cate.name" class="form-control">
+                                     <!-- <input type="text" [(ngModel)]="cate.name" class="form-control"> -->
+                                     {{cate.name}}
                                      <div *ngIf="loading" class="spinner-border text-secondary" role="status">
                                         <span class="sr-only">Loading...</span>
                                       </div>
@@ -37,11 +40,13 @@
                                   <mat-expansion-panel *ngFor="let cat of cate.cat">
                                     <mat-expansion-panel-header>
                                       <mat-panel-title>
-                                        <input type="text" [(ngModel)]="cat.name" class="form-control">
+                                        <!-- <input type="text" [(ngModel)]="cat.name" class="form-control"> -->
+                                        {{cat.name}}
                                       </mat-panel-title>
                                     </mat-expansion-panel-header>
                                     <div *ngFor="let sub of cat.sub">
-                                        <input type="text" [(ngModel)]="sub" class="form-control ml-3">
+                                        <!-- <input type="text" [(ngModel)]="sub" class="form-control ml-3"> -->
+                                        {{sub}}
                                             <button (click)="cat.sub.splice(cat.sub.indexOf(sub),1)" type="button" placeholder="Enter value" class="btn btn-link" >
                                               <span aria-hidden="true">&times;</span>
                                             </button>
@@ -65,7 +70,7 @@
                                       </mat-panel-title>
                                     </mat-expansion-panel-header> 
                                       <button (click)="new=false" class="btn btn btn-link btn-secondary btn-sm"> cancel</button>
-                                      <button (click)="addSub(cate.cat)" class="btn btn btn-link btn-primary btn-sm">Save</button>
+                                      <button (click)="addSub('vall')" class="btn btn btn-link btn-primary btn-sm">Save</button>
                                   </mat-expansion-panel>
 
 
@@ -163,11 +168,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
 
             </div>
         
