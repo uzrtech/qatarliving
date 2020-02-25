@@ -1,3 +1,7 @@
+import { AdminloginComponent } from './auth/adminlogin/adminlogin.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginnComponent } from './auth/loginn/loginn.component';
+import { AuthComponent } from './auth/auth.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
@@ -21,11 +25,16 @@ import { FooterComponent } from './home/footer/footer.component';
     PostComponent,
     PostfilterPipe,
     AdminComponent,
+    AuthComponent,
+    LoginnComponent,
+    AdminloginComponent,
+    RegisterComponent,
     DashboardComponent,
     FooterComponent
   ],
   imports: [
     BrowserModule,
+
     AppRoutingModule,
     HttpClientModule,
     FormsModule, MatFormFieldModule,
