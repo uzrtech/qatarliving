@@ -5,6 +5,10 @@ const path = require('path');
 const checkAuth = require('./routerGuard/check-auth');
 const app = express();
 const Cat = require('./models/category-model');
+var cors = require('cors')
+app.use(cors())
+
+
 
 // Include controllers from Controllers folder
 const authController = require('./controllers/auth-controller');

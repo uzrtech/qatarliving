@@ -31,9 +31,7 @@
                                     <mat-panel-title>
                                      <!-- <input type="text" [(ngModel)]="cate.name" class="form-control"> -->
                                      {{cate.name}}
-                                     <div *ngIf="loading" class="spinner-border text-secondary" role="status">
-                                        <span class="sr-only">Loading...</span>
-                                      </div>
+                                   
                                     </mat-panel-title>
                                   </mat-expansion-panel-header>
                                   <mat-accordion>
@@ -45,11 +43,11 @@
                                       </mat-panel-title>
                                     </mat-expansion-panel-header>
                                     <div *ngFor="let sub of cat.sub">
-                                        <!-- <input type="text" [(ngModel)]="sub" class="form-control ml-3"> -->
-                                        {{sub}}
-                                            <button (click)="cat.sub.splice(cat.sub.indexOf(sub),1)" type="button" placeholder="Enter value" class="btn btn-link" >
-                                              <span aria-hidden="true">&times;</span>
-                                            </button>
+                                        <input type="text" [(ngModel)]="sub" class="form-control ml-3">
+                                        <!-- {{sub}} -->
+                                        <button (click)="cat.sub.splice(cat.sub.indexOf(sub),1)" type="button" placeholder="Enter value" class="btn btn-link" >
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                     <button (click)="cate.cat.splice(cate.cat.indexOf(cat),1)" class="btn btn btn-link btn-secondary btn-sm">Delete {{cat.name}}</button>
                                     <button (click)="cat.sub.push('')" class="btn btn btn-link btn-secondary btn-sm">Add New</button>
@@ -58,6 +56,9 @@
                                     <button (click)="Categories.splice(Categories.indexOf(cate),1)" class="btn btn btn-link btn-secondary btn-sm">Delete {{cate.name}}</button>
                                     <button (click)="addSub(cate.cat)" class="btn btn btn-link btn-secondary btn-sm">Add New</button>
                                     <button (click)="saveCat(cate)" class="btn btn btn-link btn-primary btn-sm float-right">Save</button>
+                                    <div *ngIf="loading" class="spinner-border float-right mt-1 text-secondary" role="status">
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
                                 </mat-expansion-panel>
 
 
@@ -72,8 +73,6 @@
                                       <button (click)="new=false" class="btn btn btn-link btn-secondary btn-sm"> cancel</button>
                                       <button (click)="addSub('vall')" class="btn btn btn-link btn-primary btn-sm">Save</button>
                                   </mat-expansion-panel>
-
-
 
                                 
                               </mat-accordion>
@@ -137,9 +136,17 @@
                                     </mat-expansion-panel-header>
                                     <div class="alert alert-success" role="alert">
                                       <p>Title: <input type="text" [(ngModel)]="field.title" class="form-control"></p>
-                                      <p> Type: <input type="text" [(ngModel)]="field.type" class="form-control"> </p>
+                                      <p>Type:
+                                      <select [(ngModel)]="field.type" name="type" class="form-control">
+                                        <option value="text">Text</option>
+                                        <option value="number">Number</option>
+                                        <option value="option">Option</option>
+                                        <option value="check">Check</option>
+                                      </select>
+                                    </p>
                                       <p> Icon: <input type="text" [(ngModel)]="field.icon" class="form-control"> </p>
                                     </div>
+                                    <button (click)="cate.fields.splice(cate.fields.indexOf(field),1);" class="btn btn-link btn-danger btn-sm float-right">Delete</button>
   
                                   </mat-expansion-panel>
                                   
@@ -163,6 +170,9 @@
                                     </form>
                                   </mat-expansion-panel>
                                   <button (click)="saveCats(cate)" class="btn btn btn-link btn-primary float-right btn-sm">Save</button>
+                                  <div *ngIf="loading" class="spinner-border float-right text-secondary mt-1" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                  </div>
                                 </mat-expansion-panel>
                               </mat-accordion>
                         </div>
