@@ -9,7 +9,6 @@ exports.AddPost = (req ,res ,next)=>{
     console.log("file found");
   }
   var reqbody = req.body;
-  console.log("req.body");
   console.log(req.body.fields.fields);
 
   var post = new Post({
@@ -27,7 +26,6 @@ exports.AddPost = (req ,res ,next)=>{
   }
   else{ post.image=req.protocol+'://'+req.get("host")+"/uploads/default.jpg"}
       post.save().then((_post)=>{
-        console.log(_post);
         res.status(200).json({message:"post Done"});
       }).catch(err=>{console.log(err);
       })
@@ -42,7 +40,6 @@ exports.Categories =  (req ,res)=>{
 exports.CategoriesUpdate =  (req ,res)=>{
   Cat.findByIdAndUpdate(req.body._id,req.body,(err, cats)=>{
     if(err){console.log(err);}
-    console.log(cats);
     res.status(200).json({message:"Categories", data:cats });
   })
 };

@@ -29,23 +29,20 @@
                                 <mat-expansion-panel *ngFor="let cate of Categories">
                                   <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                     <!-- <input type="text" [(ngModel)]="cate.name" class="form-control"> -->
-                                     {{cate.name}}
-                                   
+                                     <input type="text" [(ngModel)]="cate.name" class="form-control">
                                     </mat-panel-title>
                                   </mat-expansion-panel-header>
                                   <mat-accordion>
                                   <mat-expansion-panel *ngFor="let cat of cate.cat">
                                     <mat-expansion-panel-header>
                                       <mat-panel-title>
-                                        <!-- <input type="text" [(ngModel)]="cat.name" class="form-control"> -->
-                                        {{cat.name}}
+                                        <input type="text" [(ngModel)]="cat.name" class="form-control">
                                       </mat-panel-title>
                                     </mat-expansion-panel-header>
-                                    <div *ngFor="let sub of cat.sub">
-                                        <input type="text" [(ngModel)]="sub" class="form-control ml-3">
+                                    <div *ngFor="let subC of cat.sub; let i = index">
+                                        <input type="text" [(ngModel)]="cat.sub[i]" class="form-control ml-3">
                                         <!-- {{sub}} -->
-                                        <button (click)="cat.sub.splice(cat.sub.indexOf(sub),1)" type="button" placeholder="Enter value" class="btn btn-link" >
+                                        <button (click)="cat.sub.splice(cat.sub.indexOf(subC),1)" type="button" placeholder="Enter value" class="btn btn-link" >
                                           <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
