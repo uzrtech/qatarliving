@@ -1,8 +1,8 @@
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { AdminService } from './../admin.service';
-import { Component, OnInit } from '@angular/core';
-import { log } from 'util';
+import {  OnInit, Component,  } from '@angular/core';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -25,8 +25,8 @@ export class DashboardComponent implements OnInit {
   })
   }
 
-  addSub(cate){ cate.push({name:'Enter Name', sub:[]}) }
-  addcat(){ this.Categories.push({name:'Enter Name', cat:[]})  }
+   addSub(cate){ cate.push({name:'Enter Name', sub:[]}) }
+  // addcat(){ this.Categories.push({name:'Enter Name', cat:[]})  }
   saveCat(cat){
     this.loading= true;
     this.Http.post<{message:string, data:string}>(this.url+'/api/categories/update',cat).subscribe(
@@ -47,4 +47,15 @@ export class DashboardComponent implements OnInit {
   addExtra(cate){console.log(cate);}
   addField(cat,val){cat.fields.push(val); console.log(cat);
   }
+
+  addNewCat(val){
+    this.Http.post<{message:string, data:string}>(this.url+'/api/categories/add',{name:val}).subscribe(
+      res=>{
+        if(res.data){this.Categories.push(res.data)}
+        this.loading= false;
+      }
+    )
+  }
+
 }
+

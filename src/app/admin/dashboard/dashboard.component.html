@@ -24,7 +24,6 @@
                     <div class="card full-height">
                         <div class="card-body">
                             <div class="card-title">Categories</div>
-                            
                             <mat-accordion>
                                 <mat-expansion-panel *ngFor="let cate of Categories">
                                   <mat-expansion-panel-header>
@@ -47,31 +46,27 @@
                                         </button>
                                     </div>
                                     <button (click)="cate.cat.splice(cate.cat.indexOf(cat),1)" class="btn btn btn-link btn-secondary btn-sm">Delete {{cat.name}}</button>
-                                    <button (click)="cat.sub.push('')" class="btn btn btn-link btn-secondary btn-sm">Add New</button>
+                                    <button (click)="cat.sub.push('Enter value')" class="btn btn btn-link btn-secondary btn-sm">Add New</button>
                                   </mat-expansion-panel>
                                   </mat-accordion>
                                     <button (click)="Categories.splice(Categories.indexOf(cate),1)" class="btn btn btn-link btn-secondary btn-sm">Delete {{cate.name}}</button>
                                     <button (click)="addSub(cate.cat)" class="btn btn btn-link btn-secondary btn-sm">Add New</button>
-                                    <button (click)="saveCat(cate)" class="btn btn btn-link btn-primary btn-sm float-right">Save</button>
-                                    <div *ngIf="loading" class="spinner-border float-right mt-1 text-secondary" role="status">
+                                    <button (click)="saveCat(cate)" class="btn btn btn-link btn-primary btn-sm float-right">
+                                      <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                      Save</button>
+                                    <!-- <div *ngIf="loading" class="spinner-border float-right mt-1 text-secondary" role="status">
                                       <span class="sr-only">Loading...</span>
-                                    </div>
+                                    </div> -->
                                 </mat-expansion-panel>
-
-
-
-
                                 <mat-expansion-panel *ngIf="new" >
                                     <mat-expansion-panel-header>
                                       <mat-panel-title>
-                                       <input type="text"   class="form-control">
+                                       <input type="text" #newCat   class="form-control">
                                       </mat-panel-title>
                                     </mat-expansion-panel-header> 
                                       <button (click)="new=false" class="btn btn btn-link btn-secondary btn-sm"> cancel</button>
-                                      <button (click)="addSub('vall')" class="btn btn btn-link btn-primary btn-sm">Save</button>
+                                      <button (click)="addNewCat(newCat.value)" class="btn btn btn-link btn-primary btn-sm">Save</button>
                                   </mat-expansion-panel>
-
-                                
                               </mat-accordion>
                             <button (click)="new=true" class="btn btn btn-link btn-primary btn-sm right">Add New</button>
 
@@ -138,7 +133,7 @@
                                         <option value="text">Text</option>
                                         <option value="number">Number</option>
                                         <option value="option">Option</option>
-                                        <option value="check">Check</option>
+                                        <option value="checkbox">CheckBox</option>
                                       </select>
                                     </p>
                                       <p> Icon: <input type="text" [(ngModel)]="field.icon" class="form-control"> </p>
@@ -166,10 +161,9 @@
                                     <button type="submit" class="btn btn-link">Add</button>
                                     </form>
                                   </mat-expansion-panel>
-                                  <button (click)="saveCats(cate)" class="btn btn btn-link btn-primary float-right btn-sm">Save</button>
-                                  <div *ngIf="loading" class="spinner-border float-right text-secondary mt-1" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                  </div>
+                                  <button (click)="saveCats(cate)" class="btn btn btn-link btn-primary float-right btn-sm">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Save</button>
                                 </mat-expansion-panel>
                               </mat-accordion>
                         </div>

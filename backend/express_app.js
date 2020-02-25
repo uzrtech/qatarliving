@@ -78,6 +78,7 @@ app.post("/api/post",upload.single('image'),homeController.AddPost);
 app.get("/api/posts",homeController.GetPosts);
 app.get("/api/categories",homeController.Categories);
 app.post("/api/categories/update",homeController.CategoriesUpdate);
+app.post("/api/categories/add",homeController.CategoriesAdd);
 
 
 

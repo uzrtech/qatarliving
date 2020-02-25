@@ -3053,9 +3053,7 @@ label {
   background: #ccc !important;
   border-color: #ccc !important; }
 
-.form-check [type="checkbox"]:not(:checked), .form-check [type="checkbox"]:checked {
-  position: absolute;
-  left: -9999px; }
+
 .form-check [type="checkbox"]:not(:checked) + .form-check-sign, .form-check [type="checkbox"]:checked + .form-check-sign, .form-check [type="checkbox"] + .form-check-sign {
   position: relative;
   padding-left: 2em;
@@ -3229,9 +3227,7 @@ label {
   padding: 10px; }
 
 .form-group label, .form-check label {
-  margin-bottom: .5rem;
   color: #495057;
-  font-weight: 600;
   font-size: 1rem;
   white-space: nowrap; }
 
@@ -4000,13 +3996,7 @@ label.error {
   .alert [data-notify="message"] {
     font-size: 13px;
     color: #908e8e; }
-  .alert .close {
-    background: rgba(255, 255, 255, 0.8);
-    width: 25px;
-    height: 25px;
-    line-height: 25px;
-    top: 12px !important;
-    border-radius: 50%; }
+
 
 /*    Alert States    */
 .alert-default {

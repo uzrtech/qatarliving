@@ -44,6 +44,18 @@ exports.CategoriesUpdate =  (req ,res)=>{
   })
 };
 
+exports.CategoriesAdd =  (req ,res)=>{
+  var cat = new Cat({
+    name:req.body.name,
+    cat:[],
+    fields:[]
+  });
+  cat.save().then(newCat=>{
+    res.status(200).json({message:"Added New actegory", data:newCat });
+  }).catch(err=>{
+    res.status(401).json({message:err });
+  })
+};
 exports.GetPosts =  (req ,res)=>{
   Post.find({},(err, posts)=>{
     res.status(200).json({message:"Posts", posts:posts });

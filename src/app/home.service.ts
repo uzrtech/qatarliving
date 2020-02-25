@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Item } from './models/items-model';
-import { Property } from './models/property-model';
-import { Vehicle } from './models/vehicle-model';
 import {environment} from '../environments/environment';
 import{ Subject} from 'rxjs';
 
@@ -10,9 +7,6 @@ import{ Subject} from 'rxjs';
   providedIn: 'root'
 })
 export class HomeService {
-  item = Item;
-  property =Property;
-  vehicle = Vehicle;
   PostSub = new Subject<string>();
   Posts;
   url= environment.baseUrl;

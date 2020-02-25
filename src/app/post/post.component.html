@@ -38,7 +38,7 @@
           <span class="navbar-toggler-icon"></span>
           <span class="lin-menu"></span>
         </button>
-        <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt=""></a>
+        <a class="navbar-brand" href="/"><img src="assets/img/logo.png" alt=""></a>
       </div>
 
       <div class="collapse navbar-collapse" id="main-navbar">
@@ -261,6 +261,7 @@
                   </div>
                 </div>
                 <div class="row">
+                 
                   <div class="col-lg-4 col-md-6 col-xs-12">
                       <div class="form-group">
                           <input type="text" ngModel class="form-control" id="title" name="title" placeholder="Title" required="" data-error="Please enter your Title">
@@ -291,7 +292,14 @@
                       </mat-expansion-panel-header>
                       <div class="row">
                         <div *ngFor="let f of Selected_Category.fields" class="col-lg-4 col-md-4 col-sm-6 ">
-                        <input ngModel [name]="f.title" [type]="f.type" [placeholder]="f.title" class="form-control">
+                          <div *ngIf="f.type!='checkbox'" class="form-group">
+                            <input ngModel [name]="f.title" [type]="f.type" [placeholder]="f.title" class="form-control">
+                          </div>
+                          <div *ngIf="f.type=='checkbox'" class="form-check">
+                            <label>
+                              <input type="checkbox" ngModel [name]="f.title" class="form-check-input">{{f.title}}
+                            </label>
+                          </div>
                         </div>
                       </div>
                     </mat-expansion-panel>
