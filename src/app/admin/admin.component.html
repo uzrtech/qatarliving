@@ -77,24 +77,24 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown hidden-caret">
-                        <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell"></i>
                             <span class="notification">4</span>
                         </a>
-                        <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
+                        <ul *ngIf="notifications" class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
                             <li>
-                                <div class="dropdown-title">You have 4 new notification</div>
+                                <div class="dropdown-title">You have {{notifications.length}} notification</div>
                             </li>
                             <li>
-                                <div class="notif-scroll scrollbar-outer">
+                                <div  class="notif-scroll scrollbar-outer">
                                     <div class="notif-center">
-                                        <a href="#">
+                                        <a *ngFor="let noti of notifications">
                                             <div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
                                             <div class="notif-content">
                                                 <span class="block">
-                                                    New user registered
+                                                    {{noti.text}}
                                                 </span>
-                                                <span class="time">5 minutes ago</span> 
+                                                <span class="time">{{noti.date | timepipe}}</span> 
                                             </div>
                                         </a>
                                     </div>
@@ -182,7 +182,7 @@
                 </div>
                 <ul class="nav nav-primary">
                     <li class="nav-item active">
-                        <a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+                        <a data-toggle="collapse" routerLink="/admin" class="collapsed" aria-expanded="false">
                             <i class="fas fa-home"></i>
                             <p>Dashboard</p>
                             <span class="caret"></span>
@@ -210,9 +210,9 @@
                     </li>
                  
                     <li class="nav-item">
-                        <a href="widgets.html">
+                        <a routerLink="/admin/subfields">
                             <i class="fas fa-desktop"></i>
-                            <p>Widgets</p>
+                            <p>Sub Category Fields</p>
                         </a>
                     </li>
                     <li class="nav-item">

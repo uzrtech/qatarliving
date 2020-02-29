@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/auth.guard';
 import { AdminloginComponent } from './auth/adminlogin/adminlogin.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginnComponent } from './auth/loginn/loginn.component';
@@ -17,6 +18,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { FooterComponent } from './home/footer/footer.component';
+import { TimepipePipe } from './admin/timepipe.pipe';
+import { SubCatFieldsComponent } from './admin/sub-cat-fields/sub-cat-fields.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 
 @NgModule({
   declarations: [
@@ -30,11 +35,13 @@ import { FooterComponent } from './home/footer/footer.component';
     AdminloginComponent,
     RegisterComponent,
     DashboardComponent,
-    FooterComponent
+    FooterComponent,
+    TimepipePipe,
+    SubCatFieldsComponent
   ],
   imports: [
     BrowserModule,
-
+    NgxDatatableModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule, MatFormFieldModule,
@@ -43,7 +50,7 @@ import { FooterComponent } from './home/footer/footer.component';
     MatProgressSpinnerModule,MatExpansionModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

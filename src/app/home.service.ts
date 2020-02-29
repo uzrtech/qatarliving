@@ -1,3 +1,4 @@
+import { log } from 'util';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../environments/environment';
@@ -35,4 +36,12 @@ export class HomeService {
     return this.Http.post<{message:string,data:string}>(this.url+'/api/post',post);
   }
   
+  PostsByCat(name){
+    console.log(name);
+    
+    this.Http.post<{message:string, posts:String}>(this.url+'/api/posts/category',{name:name}).subscribe(_posts=>{
+      this.Posts=_posts.posts;
+      this.PostSub.next(this.Posts);
+    })
+  }
 }

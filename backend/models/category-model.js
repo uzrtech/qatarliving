@@ -4,11 +4,11 @@ const CategorySchema = mongoose.Schema({
     name: {type:String},
     cat:[ {
         name:{type:String},
+        fields:[
+            {title:{type:String},type:{type:String},icon:{type:String}}
+        ],
         sub:{type: [String]}
     }],
-    extra:{
-        input:{type:[String]}
-    },
     fields:[
         {title:{type:String},type:{type:String},icon:{type:String}}
     ]

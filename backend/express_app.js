@@ -76,7 +76,9 @@ app.post("/api/user/register",authController.UserRegister);
 
 app.post("/api/post",upload.single('image'),homeController.AddPost);
 app.get("/api/posts",homeController.GetPosts);
+app.post("/api/posts/category",homeController.GetPostsBy);
 app.get("/api/categories",homeController.Categories);
+app.get("/api/notifications",homeController.Notifications);
 app.post("/api/categories/update",homeController.CategoriesUpdate);
 app.post("/api/categories/add",homeController.CategoriesAdd);
 

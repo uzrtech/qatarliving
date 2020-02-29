@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('../models/user_model');
 const jwt = require('jsonwebtoken'); 
+const Notification = require('../models/notification-model');
 
 exports.UserRegister = (req, res) => {
     var reqBody = req.body;
@@ -9,6 +10,7 @@ exports.UserRegister = (req, res) => {
     user.email = reqBody.email;
     user.password = reqBody.password;
     user.save().then((_user, err)=>{
+      addNotification(_user.name, "New User Added");
         res.status(200).json({message: "User Registered successfully!"});
     }).catch((err)=>{
       res.status(401).json({message: "Email Exists",});
@@ -59,3 +61,17 @@ exports.UserRegister = (req, res) => {
 
   
 
+  addNotification = (_name,_text)=>{
+    var notification = new Notification({
+      name, _name,
+      date: new Date(),
+      text: _text
+    });
+    notification.save((err,ress)=>{
+      if(ress){
+        console.log("Notidication added");
+        console.log(ress);
+        
+      }
+    })
+  }

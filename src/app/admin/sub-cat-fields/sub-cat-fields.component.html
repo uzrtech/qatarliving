@@ -1,0 +1,120 @@
+
+
+<div class="main-panel">
+    <div class="content">
+        <div class="panel-header bg-primary-gradient">
+            <div class="page-inner py-5">
+                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                    <div>
+                        <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
+                        <h5 class="text-white op-7 mb-2">Free Bootstrap 4 Admin Dashboard</h5>
+                    </div>
+                    <div class="ml-md-auto py-2 py-md-0">
+                        <a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
+                        <a href="#" class="btn btn-secondary btn-round">Add Customer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-inner mt--5">
+            <div class="row mt--2">
+
+                <div class="col-md-3">
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">Sub Categories</div>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                  <tbody>
+                                      <div *ngFor="let cat of Categories">
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">{{cat.name}}</th>
+                                        </tr>
+                                        <tr *ngFor="let sub of cat.cat">
+                                            <td class="btn" (click)="S_subcategory=sub;cate=cat;" scope="row">{{sub.name}}</td>
+                                        </tr>
+                                        <tr>
+                                        </tr>
+                                      </div>
+                                  </tbody>
+                                </table>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">{{S_subcategory.name}}</h4>
+                            <button (click)="saveCat()" class="ml-1 mr-1 btn btn-primary btn-sm float-right">Save
+                             <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+
+                            </button>
+                            <button (click)="action ='add'" class="btn btn-primary btn-sm float-right">Add New</button>
+                          </div>
+                          <div  class="form-inline">
+
+                            <div class="form-group ">
+                              <input type="text"  [(ngModel)]="edit.title" name="title" class="form-control" id="staticEmail2" placeholder="Title"  >
+                            </div>
+                            <div class="form-group ">
+                              <select class="form-control" [(ngModel)]="edit.type" name="type" id="type">
+                                <option value="text">Text</option>
+                                <option value="type">Type</option>
+                                <option value="icon">Icon</option>
+                              </select>
+                            </div>
+                            <div class="form-group ">
+                              <input type="text" [(ngModel)]="edit.icon" name="icon" class="form-control" id="inputword2" placeholder="Icon">
+                            </div>
+                            <button *ngIf="action=='add'" type="button" (click)="addNew()" class="btn btn-link btn-primary float-right">Add</button>
+                            <button *ngIf="action=='edit'" type="button" class="btn btn-primary btn-link float-right">Save</button>
+                          </div>
+
+                          <div class="card-content">
+                            <div class="card-body">
+                              <table class="table table-responsive-sm text-center">
+                                <thead>
+                                  <tr>
+                                    <th>Title</th>
+                                    <th>Type</th>
+                                    <th>Icon</th>
+                                    <th>Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let field of S_subcategory.fields">
+                                    <td>{{field.title}}</td>
+                                    <td>{{field.type}}</td>
+                                    <td>{{field.icon}}</td>
+                                    <td>
+                                      <a (click)="action='edit';edit=field" class="m-1 info p-0 text-primary">
+                                        <i class="fa fa-edit"></i>
+                                      </a>
+                                      <a (click)="S_subcategory.fields.splice(S_subcategory.fields.indexOf(field),1)" class="m-1 info p-0 text-primary">
+                                        <i class="fa fa-trash"></i>
+                                      </a>
+                                    </td>
+                                  </tr>
+                                 
+                                </tbody>
+                              </table>
+                            
+                            </div>
+                          </div>
+                    </div>
+                </div>
+
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

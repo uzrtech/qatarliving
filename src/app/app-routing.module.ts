@@ -1,3 +1,5 @@
+import { SubCatFieldsComponent } from './admin/sub-cat-fields/sub-cat-fields.component';
+import { AuthGuard } from './auth/auth.guard';
 import { AdminloginComponent } from './auth/adminlogin/adminlogin.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginnComponent } from './auth/loginn/loginn.component';
@@ -11,8 +13,9 @@ import {PostComponent} from './post/post.component';
 const routes: Routes = [
   
   {path:"post", component:PostComponent},
-  {path:"admin", component:AdminComponent, children:[
-    {path:'', component: DashboardComponent}
+  {path:"admin", component:AdminComponent, canActivate: [AuthGuard],data: { expectedRole: 'admin'},  children:[
+    {path:'', component: DashboardComponent},
+    {path:'subfields', component: SubCatFieldsComponent}
   ]},
   {path :'auth', component:AuthComponent,children:[
     {path:'', component: LoginnComponent},

@@ -57,7 +57,7 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Gallery <i class="fa fa-angle-down"></i>
             </a>
             <div class="dropdown-menu">
@@ -67,7 +67,7 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Pages <i class="fa fa-angle-down"></i>
             </a>
             <div class="dropdown-menu">
@@ -84,7 +84,7 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Blog <i class="fa fa-angle-down"></i>
             </a>
             <div class="dropdown-menu">
@@ -247,62 +247,8 @@
                     </mat-expansion-panel-header>
                     
                     
-                    <div class="row range-slider" >
-                      <div *ngIf="Selected_Category && Selected_Category.city" class="col-lg-3 col-md-6 col-xs-12">
-                        <div class="search-category-container">
-                          <label class="styled-select">
-                            <select class="classic">
-                              <option>All Cities</option>
-                              <option>San Jose</option>
-                            </select>
-                          </label>
-                        </div>
-                      </div>
-                      <div *ngIf="Selected_Category && Selected_Category.bedrooms" class="col-lg-3 col-md-6 col-xs-12">
-                          <div class="search-category-container">
-                            <label class="styled-select">
-                              <select class="classic">
-                                <option>Rooms</option>
-                                <option>1</option>
-                                <option>2</option>                           
-                                <option>3</option>                           
-                                <option>4</option>                           
-                                <option>5</option>                           
-                                <option>8</option>
-                              </select>
-                            </label>
-                          </div>
-                      </div>
-                      <div *ngIf="Selected_Category && Selected_Category.make" class="col-lg-3 col-md-6 col-xs-12">
-                        <div class="search-category-container">
-                          <label class="styled-select">
-                            <select class="classic">
-                              <option>Rooms</option>
-                              <option>1</option>
-                              <option>2</option>                           
-                              <option>3</option>                           
-                              <option>4</option>                           
-                              <option>5</option>                           
-                              <option>8</option>
-                            </select>
-                          </label>
-                        </div>
-                    </div>
-                    <div *ngIf="Selected_Category && Selected_Category.year" class="col-lg-3 col-md-6 col-xs-12">
-                      <div class="search-category-container">
-                        <label class="styled-select">
-                          <select class="classic">
-                            <option>Rooms</option>
-                            <option>1</option>
-                            <option>2</option>                           
-                            <option>3</option>                           
-                            <option>4</option>                           
-                            <option>5</option>                           
-                            <option>8</option>
-                          </select>
-                        </label>
-                      </div>
-                  </div>
+                    <div class="row " >
+                      
                     </div>
                 
                   </mat-expansion-panel>
@@ -348,10 +294,7 @@
                     <div class="item-body">
                       <h3 class="property-title"><a href="property.html">{{_post.title}}</a></h3>
                       <div class="adderess">{{_post.des}}</div>
-                      <div *ngFor="let f of _post.fields">
-                      <div class="adderess"><i [class]="f.icon"></i>{{f.title}}:<span class="m-1">{{f.value}}</span></div>
-
-                      </div>
+                      <!-- <div *ngFor="let f of _post.fields"><div class="adderess"><i [class]="f.icon"></i>{{f.title}}:<span class="m-1">{{f.value}}</span></div></div> -->
                       <div class="pricin-list">
                         <div class="property-price">
                           <span>${{_post.price}}</span>

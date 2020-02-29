@@ -19,9 +19,9 @@ export class AdminloginComponent implements OnInit {
     else if(formData.password==""){this.ErrorMessage="Enter Password";}
     else if(formData.password=="password" && formData.email=="admin"){
       this.ErrorMessage="";
+      localStorage.setItem('role','admin');
       this.router.navigate(['/admin'])
     }
-    
   }
 
 }

@@ -3,14 +3,13 @@ var upload = multer({ dest: 'uploads/' });
 const Post = require('../models/post-model');
 const date = new Date();
 const Cat = require('../models/category-model');
+const Notification = require('../models/notification-model');
 
 exports.AddPost = (req ,res ,next)=>{
   if(req.file){
     console.log("file found");
   }
   var reqbody = req.body;
-  console.log(req.body.fields.fields);
-
   var post = new Post({
     title: reqbody.title,
     des:reqbody.des,
@@ -26,6 +25,7 @@ exports.AddPost = (req ,res ,next)=>{
   }
   else{ post.image=req.protocol+'://'+req.get("host")+"/uploads/default.jpg"}
       post.save().then((_post)=>{
+        addNotification("","New Post Added:"+ _post.title);
         res.status(200).json({message:"post Done"});
       }).catch(err=>{console.log(err);
       })
@@ -36,11 +36,23 @@ exports.Categories =  (req ,res)=>{
   })
 };
 
+exports.Notifications =  (req ,res)=>{
+  Notification.find({}).sort({date:-1}).then(
+    (noti)=>{
+      if(noti && noti.length>10){
+        noti= noti.splice(0,10);
+      }
+      res.status(200).json({message:"Categories", data:noti });
+    }
+  )
+};
 
 exports.CategoriesUpdate =  (req ,res)=>{
-  Cat.findByIdAndUpdate(req.body._id,req.body,(err, cats)=>{
+  Cat.findByIdAndUpdate(req.body._id,req.body,(err, cat)=>{
     if(err){console.log(err);}
-    res.status(200).json({message:"Categories", data:cats });
+    addNotification("Admin","Categories Updated:"+ cat.name);
+
+    res.status(200).json({message:"Categories", data:cat });
   })
 };
 
@@ -61,6 +73,14 @@ exports.GetPosts =  (req ,res)=>{
     res.status(200).json({message:"Posts", posts:posts });
   })
 };
+
+exports.GetPostsBy =  (req ,res)=>{
+  console.log('catttt');
+  
+  Post.find({category:req.body.name},(err, posts)=>{
+    res.status(200).json({message:"Posts", posts:posts });
+  })
+};
 // exports.AppointmentApproval = (req, res)=>{
 //     Post.findOneAndUpdate({_id:req.body.post_id},{approved:true})
 //     .then ((subject)=>{
@@ -73,3 +93,17 @@ exports.GetPosts =  (req ,res)=>{
 //     .then ((subject)=>{
 //       return res.status(200).json({message:'Post Deleted'});
 // }).catch((err)=>{console.log("Failed to Delete Post"); return; })};
+addNotification = (_name,_text)=>{
+  var notification = new Notification({
+    name: _name,
+    date: new Date(),
+    text: _text
+  });
+  notification.save((err,ress)=>{
+    if(ress){
+      console.log("Notidication added");
+      console.log(ress);
+      
+    }
+  })
+}

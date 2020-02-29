@@ -16,3 +16,7 @@ mat-panel-title{
 input{
     width: auto;
 }
+
+.spinner-border{
+    vertical-align: none !important;
+}

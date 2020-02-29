@@ -22,6 +22,7 @@ export class PostComponent implements OnInit {
   SubCategories;
   Selected_Category;
   types;
+  loading= false;
   type;
   Selected_SubCategory;
   ngOnInit() {
@@ -50,6 +51,7 @@ export class PostComponent implements OnInit {
     else if(values.des==""){this.EMessage="Enter Description"}
     else if(values.price==""){this.EMessage="Enter Price"}
     else{
+      this.loading=true;
       this.EMessage="";
       var fields=[];
       var data=
@@ -65,8 +67,11 @@ export class PostComponent implements OnInit {
       this.Selected_Category.fields.forEach(element => {
         data.fields.push({title:element.title,icon:element.icon,value:values[element.title]})
       });
+      this.Selected_SubCategory.fields.forEach(element => {
+        data.fields.push({title:element.title,icon:element.icon,value:values[element.title]})
+      });
      this.homeService.AddPost(data,this.fileData)
-     .subscribe(val=>{this.posted=true; console.log("posted="+val);})
+     .subscribe(val=>{this.loading=false;this.posted=true; console.log("posted="+val);})
   }
   }
   fileProgress(fileInput: any) {
