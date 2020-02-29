@@ -14,7 +14,7 @@ export class SubCatFieldsComponent implements OnInit {
 
   Categories;
   action='add';
-  S_subcategory = {fields:[]};
+  S_subcategory = {name:'',fields:[]};
   cate;
   loading=false;
   edit={title:'',type:'', icon:''};
