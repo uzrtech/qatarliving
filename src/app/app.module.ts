@@ -13,7 +13,7 @@ import { CommonModule} from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { PostfilterPipe } from './postfilter.pipe';
-import {MatProgressSpinnerModule, MatExpansionModule, MatFormFieldModule} from '@angular/material';
+import {MatProgressSpinnerModule, MatExpansionModule, MatFormFieldModule, MatSidenavModule, MatIconModule, MatToolbarModule, MatListModule, MatMenuModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
@@ -21,6 +21,10 @@ import { FooterComponent } from './home/footer/footer.component';
 import { TimepipePipe } from './admin/timepipe.pipe';
 import { SubCatFieldsComponent } from './admin/sub-cat-fields/sub-cat-fields.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { HomeSideComponent } from './home/home-side/home-side.component';
+import { HeaderComponent } from './home/header/header.component';
+import { SearchComponent } from './home/search/search.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -37,7 +41,11 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     DashboardComponent,
     FooterComponent,
     TimepipePipe,
-    SubCatFieldsComponent
+    SubCatFieldsComponent,
+    HomeSideComponent,
+    HeaderComponent,
+    SearchComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     CommonModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,MatExpansionModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSidenavModule,MatIconModule,MatToolbarModule,MatListModule,MatMenuModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

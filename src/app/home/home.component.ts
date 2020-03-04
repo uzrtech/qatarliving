@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../home.service';
 import { Subscription} from 'rxjs';
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
   types;
   type;
   Selected_SubCategory;
-  constructor(private HomeService:HomeService) { }
+  constructor(private HomeService:HomeService, private router: Router) { }
 
   ngOnInit() {
     this.HomeService.GetCategories().subscribe(Cats=>{
@@ -31,8 +32,9 @@ export class HomeComponent implements OnInit {
   CategoryChange(index){
     if(index==0){this.CategoryFilter=null;return};
     this.Selected_Category =this.Categories[index-1];
-    this.HomeService.PostsByCat(this.Selected_Category.name);
-    this.loading;
+    this.router.navigate(['/search',this.Selected_Category.name,''])
+    // this .HomeService.PostsByCat(this.Selected_Category.name,"");
+    // this.loading;
     // this.CategoryFilter=this.Selected_Category.name;
     // this.CategoryFilterr=null;
     this.SubCategories= this.Categories[index-1].cat;

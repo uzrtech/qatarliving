@@ -75,11 +75,21 @@ exports.GetPosts =  (req ,res)=>{
 };
 
 exports.GetPostsBy =  (req ,res)=>{
-  console.log('catttt');
-  
-  Post.find({category:req.body.name},(err, posts)=>{
-    res.status(200).json({message:"Posts", posts:posts });
-  })
+
+  if(req.body.sub && req.body.sub!=''){
+    console.log(req.body.name+ req.body.sub);
+    
+    Post.find({category:req.body.name, subcategory:req.body.sub},(err, posts)=>{
+      console.log(posts);
+      
+      res.status(200).json({message:"Posts", posts:posts });
+    })
+  }
+  else{
+    Post.find({category:req.body.name},(err, posts)=>{
+      res.status(200).json({message:"Posts", posts:posts });
+    })
+  }
 };
 // exports.AppointmentApproval = (req, res)=>{
 //     Post.findOneAndUpdate({_id:req.body.post_id},{approved:true})

@@ -8,6 +8,7 @@ export class PostfilterPipe implements PipeTransform {
     console.log(value);
     
     if (!items) return [];
+    items = items.splice(0,3);
     if (!value) return  items;
     if (value == '' || value == null) return items;
     if( sub!=undefined && type!= undefined ){ return items.filter(e => { return e[label]==value && e['subcategory']==sub && e['type']==type} );}
