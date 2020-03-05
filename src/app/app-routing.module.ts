@@ -28,11 +28,13 @@ const routes: Routes = [
   // {path :'auth', loadChildren: () => import(`./auth/auth.module`).then(m => m.AuthModule)},
   {path:"", component:HeaderComponent, children:[
     {path:'', component: HomeComponent},
-    {path:'profile', component: UserProfileComponent},
+    // {path:'profile', component: UserProfileComponent},
     {path:'search/:category/:sub', component:SearchComponent},
     {path:'search/:category', component:SearchComponent},
     {path:'post', component:PostComponent,canActivate: [AuthGuard]},
+    { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
   ]},
+  
   
 ];
 @NgModule({

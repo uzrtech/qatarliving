@@ -37,7 +37,7 @@
                         <a class="linkedin" href="#"><i class="lni-linkedin-filled"></i></a> -->
                         <a class="facebook btn"   [matMenuTriggerFor]="menu"><i class='lni lni-user'></i></a>
                           <mat-menu #menu="matMenu">
-                            <button mat-menu-item>Profile</button>
+                            <button [routerLink]="[ '/profile' ]" mat-menu-item>Profile</button>
                             <button mat-menu-item>Setting</button>
                             <button mat-menu-item>Logout</button>
                           </mat-menu>
