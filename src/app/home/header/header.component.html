@@ -105,65 +105,71 @@
                                                               <li *ngFor="let cat  of Categories"><a [routerLink]="[ '/search', cat.name,'' ]">{{cat.name}}</a></li>
                                                             </ul>
                                                       <div class="menu-mobile-collapse-trigger"><span></span></div></li>
+                                                     
                                                 </ul>
                                                 <ul class="menu-links" style="display: block; max-height: 400px; overflow: auto;">
 
                                                     <li *ngFor="let category of Categories" class="hoverTrigger">
                                                         <a href="#">{{category.name}}  <i class="fa fa-angle-down fa-indicator"></i>
                                                             <div class="mobileTriggerButton"></div>
-                                                        </a>
-                                                    <ul class="drop-down-multilevel grid-col-12 effect-expand-top" style="transition: all 400ms ease 0s;">
-                                                        <li *ngFor="let sub of category.cat" class="hoverTrigger"><a [routerLink]="[ '/search', category.name, sub.name ]">{{sub.name}}  </a></li>
-                                                    </ul>
+                                                          </a>
+                                                            <p *ngFor="let sub of category.cat">
+                                                              <!-- {{sub.name}} -->
+                                                              <a [routerLink]="[ '/search', category.name, sub.name ]">{{sub.name}}  </a>
+                                                            </p>
+                                                       
+                                                       
+                                                    <!-- <ul class="drop-down-multilevel grid-col-12 effect-expand-top" style="transition: all 400ms ease 0s;">
+                                                        <li *ngFor="let sub of category.cat" class="hoverTrigger"></li>
+                                                    </ul> -->
                                                     </li>
-
-                                                  <li class="hoverTrigger"><a href="#">Demos<i class="fa fa-angle-down fa-indicator"></i>
-                                                        <div class="mobileTriggerButton"></div></a>
-                                                        <div class="drop-down   grid-col-4 effect-expand-top" style="transition: all 400ms ease 0s;">
-                                                            <div class="grid-row"><div class="grid-col-6"><h4><a href="#">Awesome</a></h4>
-                                                          <ul>
-                                                            <li><a href="http://adforest.scriptsbundle.com/"><i class="fa fa-angle-right fa-indicator"></i>General Classified  </a></li>
-                                                            <li><a href="http://adforest.scriptsbundle.com/petforest/"><i class="fa fa-angle-right fa-indicator"></i>PetForest  </a></li>
-                                                            <li><a href="http://adforest.scriptsbundle.com/techforest/"><i class="fa fa-angle-right fa-indicator"></i>TechForest  </a></li>
-                                                            <li><a href="https://adforest.scriptsbundle.com/bookforest/"><i class="fa fa-angle-right fa-indicator"></i>MatchForest  </a></li>
-                                                            <li><a href="http://adforest.scriptsbundle.com/sports-forest/"><i class="fa fa-angle-right fa-indicator"></i>Sportsforest  </a></li>
-                                                            <li><a href="https://adforest.scriptsbundle.com/mobileforest/"><i class="fa fa-angle-right fa-indicator"></i>Mobileforest  </a></li>
-                                                          </ul>
-                                                    </div>
-                                                    <div class="grid-col-6"><h4><a href="#">Websites</a></h4>
-                                                          <ul>
-                                                            <li><a href="https://adforest.scriptsbundle.com/bookforest/"><i class="fa fa-angle-right fa-indicator"></i>Bookforest  </a></li>
-                                                            <li><a href="https://adforest.scriptsbundle.com/toyforest/"><i class="fa fa-angle-right fa-indicator"></i>Toyforest  </a></li>
-                                                            <li><a href="http://adforest.scriptsbundle.com/serviceforest/"><i class="fa fa-angle-right fa-indicator"></i>Serviceforest  </a></li>
-                                                            <li><a href="http://adforest.scriptsbundle.com/decorforest/"><i class="fa fa-angle-right fa-indicator"></i>Decorforest  </a></li>
-                                                            <li><a href="http://adforest.scriptsbundle.com/realestate-forest/"><i class="fa fa-angle-right fa-indicator"></i>Realestateforest  </a></li>
-                                                            <li><a href="http://adforest.scriptsbundle.com/landing-page/landingpage/"><i class="fa fa-angle-right fa-indicator"></i>App Landing Page  </a></li>
-                                                          </ul>
-                                                    </div>
-                                                    </div>
-                                                    </div>
-                                                  </li>
-                                                  <li class="hoverTrigger"><a href="#">Headers  <i class="fa fa-angle-down fa-indicator"></i><div class="mobileTriggerButton"></div></a>
-                                                    <ul class="drop-down-multilevel grid-col-12 effect-expand-top" style="transition: all 400ms ease 0s;">
-                                                      <li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern">Header Light  </a></li>
-                                                      <li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern-1">Header Transparent  </a></li>
-                                                      <li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern-2">Header White  </a></li>
-                                                      <li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern-3">Header Black  </a></li>
-                                                      <li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern-4">Header With Banner  </a></li>
-                                                    </ul>
-                                                  </li>
-                                                  <li class="hoverTrigger"><a href="#">Search  <i class="fa fa-angle-down fa-indicator"></i><div class="mobileTriggerButton"></div></a>
-                                                    <ul class="drop-down-multilevel grid-col-12 effect-expand-top" style="transition: all 400ms ease 0s;">
-                                                      <li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern-2/search-results/">Search with Sidebar  </a></li>
-                                                      <li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern/search-results/?org=Aurora%2C+CO%2C+United+States&amp;rd=40">Radius Search  </a></li>
-                                                      <li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern-3/search-results/">Search with Topbar  </a></li>
-                                                    </ul>
-                                                  </li>
-                                                  <li class="hoverTrigger"><a href="#">Categories  <i class="fa fa-angle-down fa-indicator"></i><div class="mobileTriggerButton"></div></a>
-                                                    <ul class="drop-down-multilevel grid-col-12 effect-expand-top" style="transition: all 400ms ease 0s;"><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/category-classic/">Category 1  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern-variation/">Category 2  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/minimal-veriation/">Category 3  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/fancy-veriation/">Category 4  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/flat-variation/">Category 5  </a></li>
-                                                    </ul>
-                                                  </li>
-                                                </ul>
+                                                    <li class="hoverTrigger">
+                                                      <a href="#">Headers  
+                                                        <i class="fa fa-angle-down fa-indicator"></i>
+                                                      </a>
+                                                      <p>Headers Headers
+                                                      </p>
+                                                     
+                                                    </li>
+                                                    <li class="hoverTrigger"><a href="#">Search  <i class="fa fa-angle-down fa-indicator"></i><div class="mobileTriggerButton"></div></a>
+                                                      <ul class="drop-down-multilevel grid-col-12 effect-expand-top" style="transition: all 400ms ease 0s;">
+                                                        <li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern-2/search-results/">Search with Sidebar  </a></li>
+                                                        <li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern/search-results/?org=Aurora%2C+CO%2C+United+States&amp;rd=40">Radius Search  </a></li>
+                                                        <li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern-3/search-results/">Search with Topbar  </a></li>
+                                                      </ul>
+                                                    </li>
+                                                    <li class="hoverTrigger"><a href="#">Categories  <i class="fa fa-angle-down fa-indicator"></i><div class="mobileTriggerButton"></div></a>
+                                                      <ul class="drop-down-multilevel grid-col-12 effect-expand-top" style="transition: all 400ms ease 0s;"><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/category-classic/">Category 1  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern-variation/">Category 2  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/minimal-veriation/">Category 3  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/fancy-veriation/">Category 4  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/flat-variation/">Category 5  </a></li>
+                                                      </ul>
+                                                    </li>
+                                                    
+                                                    <li class="hoverTrigger"><a href="#">Demos<i class="fa fa-angle-down fa-indicator"></i>
+                                                          <div class="mobileTriggerButton"></div></a>
+                                                          <div class="drop-down   grid-col-4 effect-expand-top" style="transition: all 400ms ease 0s;">
+                                                              <div class="grid-row"><div class="grid-col-6"><h4><a href="#">Awesome</a></h4>
+                                                            <ul>
+                                                              <li><a href="http://adforest.scriptsbundle.com/"><i class="fa fa-angle-right fa-indicator"></i>General Classified  </a></li>
+                                                              <li><a href="http://adforest.scriptsbundle.com/petforest/"><i class="fa fa-angle-right fa-indicator"></i>PetForest  </a></li>
+                                                              <li><a href="http://adforest.scriptsbundle.com/techforest/"><i class="fa fa-angle-right fa-indicator"></i>TechForest  </a></li>
+                                                              <li><a href="https://adforest.scriptsbundle.com/bookforest/"><i class="fa fa-angle-right fa-indicator"></i>MatchForest  </a></li>
+                                                              <li><a href="http://adforest.scriptsbundle.com/sports-forest/"><i class="fa fa-angle-right fa-indicator"></i>Sportsforest  </a></li>
+                                                              <li><a href="https://adforest.scriptsbundle.com/mobileforest/"><i class="fa fa-angle-right fa-indicator"></i>Mobileforest  </a></li>
+                                                            </ul>
+                                                      </div>
+                                                      <div class="grid-col-6"><h4><a href="#">Websites</a></h4>
+                                                            <ul>
+                                                              <li><a href="https://adforest.scriptsbundle.com/bookforest/"><i class="fa fa-angle-right fa-indicator"></i>Bookforest  </a></li>
+                                                              <li><a href="https://adforest.scriptsbundle.com/toyforest/"><i class="fa fa-angle-right fa-indicator"></i>Toyforest  </a></li>
+                                                              <li><a href="http://adforest.scriptsbundle.com/serviceforest/"><i class="fa fa-angle-right fa-indicator"></i>Serviceforest  </a></li>
+                                                              <li><a href="http://adforest.scriptsbundle.com/decorforest/"><i class="fa fa-angle-right fa-indicator"></i>Decorforest  </a></li>
+                                                              <li><a href="http://adforest.scriptsbundle.com/realestate-forest/"><i class="fa fa-angle-right fa-indicator"></i>Realestateforest  </a></li>
+                                                              <li><a href="http://adforest.scriptsbundle.com/landing-page/landingpage/"><i class="fa fa-angle-right fa-indicator"></i>App Landing Page  </a></li>
+                                                            </ul>
+                                                      </div>
+                                                      </div>
+                                                      </div>
+                                                    </li>
+                                                  </ul>
                                               </div>
                                           </div>
                                       </div>

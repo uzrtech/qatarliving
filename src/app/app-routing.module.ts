@@ -33,6 +33,7 @@ const routes: Routes = [
     {path:'search/:category', component:SearchComponent},
     {path:'post', component:PostComponent,canActivate: [AuthGuard]},
   ]},
+  
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

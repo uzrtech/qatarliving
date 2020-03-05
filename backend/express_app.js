@@ -81,6 +81,7 @@ app.get("/api/categories",homeController.Categories);
 app.get("/api/notifications",homeController.Notifications);
 app.post("/api/categories/update",homeController.CategoriesUpdate);
 app.post("/api/categories/add",homeController.CategoriesAdd);
+app.post("/api/getuser",homeController.GetUser);
 
 
 

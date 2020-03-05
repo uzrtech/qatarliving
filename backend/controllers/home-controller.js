@@ -1,6 +1,7 @@
 const multer = require('multer');
 var upload = multer({ dest: 'uploads/' });
 const Post = require('../models/post-model');
+const User = require('../models/user_model');
 const date = new Date();
 const Cat = require('../models/category-model');
 const Notification = require('../models/notification-model');
@@ -71,6 +72,12 @@ exports.CategoriesAdd =  (req ,res)=>{
 exports.GetPosts =  (req ,res)=>{
   Post.find({},(err, posts)=>{
     res.status(200).json({message:"Posts", posts:posts });
+  })
+};
+
+exports.GetUser =  (req ,res)=>{
+  User.findById(req.body._id,(err, data)=>{
+    res.status(200).json({message:"User", posts:data });
   })
 };
 
