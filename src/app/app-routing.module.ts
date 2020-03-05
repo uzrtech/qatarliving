@@ -32,7 +32,7 @@ const routes: Routes = [
     {path:'search/:category/:sub', component:SearchComponent},
     {path:'search/:category', component:SearchComponent},
     {path:'post', component:PostComponent,canActivate: [AuthGuard]},
-    { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
+    { path: 'profile', canActivate:[AuthGuard], loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
   ]},
   
   

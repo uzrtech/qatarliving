@@ -82,6 +82,8 @@ app.get("/api/notifications",homeController.Notifications);
 app.post("/api/categories/update",homeController.CategoriesUpdate);
 app.post("/api/categories/add",homeController.CategoriesAdd);
 app.post("/api/getuser",homeController.GetUser);
+app.post("/api/updateuser",homeController.UpdateUser);
+app.post("/api/updateuserpass",homeController.UpdateUserPass);
 
 
 

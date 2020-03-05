@@ -18,7 +18,7 @@ export class AuthService {
     .subscribe((userData)=>{
       localStorage.setItem('token', userData.token);
       localStorage.setItem('_id', userData._id);
-      this.router.navigate(['/post']);
+      this.router.navigate(['/profile']);
     },
      (err)=>{
        console.log(err);

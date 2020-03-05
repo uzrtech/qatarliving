@@ -13,9 +13,13 @@ export class ProfileComponent implements OnInit {
 
   url = environment.baseUrl;
   User;
+  username='';
   ngOnInit() {
     var id = localStorage.getItem('_id');
-    this.http.post<{}>(this.url+"/api/getuser", id);
+    this.http.post<{message:String, data:String}>(this.url+"/api/getuser",{_id: id}).subscribe(data=>{
+      this.User = data.data;
+      this.username= this.User.name;
+    })
   }
   logout(){};
 

@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,6 +8,8 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserDashboardProfileComponent } from './user-dashboard-profile/user-dashboard-profile.component';
 import { UserAddPostComponent } from './user-add-post/user-add-post.component';
 import { UserPasswordChangeComponent } from './user-password-change/user-password-change.component';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -14,7 +17,9 @@ import { UserPasswordChangeComponent } from './user-password-change/user-passwor
   declarations: [ProfileComponent, UserDashboardComponent, UserDashboardProfileComponent, UserAddPostComponent, UserPasswordChangeComponent],
   imports: [
     CommonModule,
-    ProfileRoutingModule
+    FormsModule,
+    ProfileRoutingModule,
+    MatSnackBarModule
   ]
 })
 export class ProfileModule { }

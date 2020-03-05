@@ -76,8 +76,27 @@ exports.GetPosts =  (req ,res)=>{
 };
 
 exports.GetUser =  (req ,res)=>{
-  User.findById(req.body._id,(err, data)=>{
-    res.status(200).json({message:"User", posts:data });
+  console.log(req.body._id);
+  User.findById(req.body._id,(err, _data)=>{
+    res.status(200).json({message:"User", data:_data });
+  })
+};
+
+exports.UpdateUser =  (req ,res)=>{
+  User.findByIdAndUpdate(req.body._id,req.body,(err, _data)=>{
+    res.status(200).json({message:"User", data:_data });
+  })
+};
+exports.UpdateUserPass =  (req ,res)=>{
+  User.findById(req.body._id,(err,data)=>{
+    console.log(data);
+    
+    if(data.password==req.body.old){
+     User.findByIdAndUpdate(req.body._id,{password:req.body.new},(err,_user)=>{
+       console.log(_user);
+      res.status(200).json({message:"Password", data:_user });
+     })
+    }
   })
 };
 
