@@ -33,6 +33,7 @@ export class HomeService {
     // formData.append('category', post.category);
     // formData.append('subcategory', post.subcategory);
     // formData.append('type', post.type);
+    post.userid=localStorage.getItem('_id');
     return this.Http.post<{message:string,data:string}>(this.url+'/api/post',post);
   }
   

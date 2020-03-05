@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private Router:Router) { }
 
   url = environment.baseUrl;
   User;
@@ -21,6 +22,11 @@ export class ProfileComponent implements OnInit {
       this.username= this.User.name;
     })
   }
-  logout(){};
+  logout(){
+    localStorage.removeItem('_id');
+    localStorage.removeItem('token');
+    localStorage.removeItem('name');
+    this.Router.navigate(['/']);
+  };
 
 }

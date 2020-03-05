@@ -1,3 +1,4 @@
+import { UserPostsComponent } from './user-posts/user-posts.component';
 import { UserPasswordChangeComponent } from './user-password-change/user-password-change.component';
 import { UserDashboardProfileComponent } from './user-dashboard-profile/user-dashboard-profile.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -11,6 +12,7 @@ const routes: Routes = [{ path: '', component: ProfileComponent ,children:[
   { path:'', component:UserDashboardComponent},
   { path:'settings', component:UserDashboardProfileComponent},
   { path:'add', component:UserAddPostComponent},
+  { path:'posts', component:UserPostsComponent},
   { path:'changepassword', component:UserPasswordChangeComponent},
 ]}];
 

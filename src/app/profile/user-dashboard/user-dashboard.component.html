@@ -46,41 +46,22 @@
     <thead>
     <tr>
     <th>Listing Name</th>
+    <th>Category</th>
     <th>Date</th>
-    <th>Rating</th>
     <th>Status</th>
     <th>Edit</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-    <td>Amazing oceanfront apartment</td>
-    <td>17 May 2018</td>
+    <tr *ngFor="let post of posts">
+    <td>{{post.title}}</td>
+    <td>{{post.category}}</td>
+    <td>{{post.date | date:'mediumDate'}}</td>
     <td class="rating"><span>4.3</span></td>
     <td class="status"><span class=" active">Active</span></td>
-    <td class="edit"><a href="#"><span class="lni-pencil"></span></a></td>
+    <td class="edit"><a (click)="posts.splice(posts.indexOf(psot),1)"><span class="lni-trash text-danger"></span></a></td>
     </tr>
-    <tr>
-    <td>Red Blue Restaurant</td>
-     <td>17 May 2018</td>
-    <td class="rating"><span>4.3</span></td>
-    <td class="status"><span class="active">Active</span></td>
-    <td class="edit"><a href="#"><span class="lni-pencil"></span></a></td>
-    </tr>
-    <tr>
-    <td>Amazing oceanfront apartment</td>
-    <td>12 June 2018</td>
-    <td class="rating"><span>4.3</span></td>
-    <td class="status"><span class="non-active">Non-Active</span></td>
-    <td class="edit"><a href="#"><span class="lni-pencil"></span></a></td>
-    </tr>
-    <tr>
-    <td>Luxury home for sale</td>
-    <td>31 Aug 2018</td>
-    <td class="rating"><span>4.3</span></td>
-    <td class="status"><span class="active">Active</span></td>
-    <td class="edit"><a href="#"><span class="lni-pencil"></span></a></td>
-    </tr>
+   
     </tbody>
     </table>
     </div>

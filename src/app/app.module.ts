@@ -13,7 +13,7 @@ import { CommonModule} from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { PostfilterPipe } from './postfilter.pipe';
-import {MatProgressSpinnerModule, MatExpansionModule, MatFormFieldModule, MatSidenavModule, MatIconModule, MatToolbarModule, MatListModule, MatMenuModule} from '@angular/material';
+import {MatProgressSpinnerModule, MatExpansionModule, MatFormFieldModule, MatSidenavModule, MatIconModule, MatToolbarModule, MatListModule, MatMenuModule, MatSnackBarModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
@@ -57,7 +57,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ReactiveFormsModule,
     MatProgressSpinnerModule,MatExpansionModule,
     BrowserAnimationsModule,
-    MatSidenavModule,MatIconModule,MatToolbarModule,MatListModule,MatMenuModule
+    MatSidenavModule,MatIconModule,MatToolbarModule,MatListModule,MatMenuModule, MatSnackBarModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

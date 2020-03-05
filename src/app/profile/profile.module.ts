@@ -9,12 +9,13 @@ import { UserDashboardProfileComponent } from './user-dashboard-profile/user-das
 import { UserAddPostComponent } from './user-add-post/user-add-post.component';
 import { UserPasswordChangeComponent } from './user-password-change/user-password-change.component';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { UserPostsComponent } from './user-posts/user-posts.component';
 
 
 
 
 @NgModule({
-  declarations: [ProfileComponent, UserDashboardComponent, UserDashboardProfileComponent, UserAddPostComponent, UserPasswordChangeComponent],
+  declarations: [ProfileComponent, UserDashboardComponent, UserDashboardProfileComponent, UserAddPostComponent, UserPasswordChangeComponent, UserPostsComponent],
   imports: [
     CommonModule,
     FormsModule,

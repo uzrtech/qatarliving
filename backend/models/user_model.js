@@ -6,7 +6,7 @@ const UserSchema = mongoose.Schema({
     role:{type:String},
     phone:{type:String},
     address:{type:String},
-    posts:[{type:mongoose.Schema.Types.ObjectId}],
+    Posts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
     email :{ type:String, require: true , unique : true},
     password :{ type : String, require : true},
     profile_pic :{ type : String},

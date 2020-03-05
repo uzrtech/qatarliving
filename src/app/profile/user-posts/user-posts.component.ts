@@ -3,11 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-user-dashboard',
-  templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.css']
+  selector: 'app-user-posts',
+  templateUrl: './user-posts.component.html',
+  styleUrls: ['./user-posts.component.css']
 })
-export class UserDashboardComponent implements OnInit {
+export class UserPostsComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   url = environment.baseUrl;
@@ -19,6 +19,7 @@ export class UserDashboardComponent implements OnInit {
       this.User = data.data;
       this.posts=this.User.Posts;
       console.log(this.User);
+      console.log(this.posts);
     })
   }
 }

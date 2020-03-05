@@ -19,17 +19,26 @@ exports.AddPost = (req ,res ,next)=>{
     type: reqbody.type,
     fields: req.body.fields,
     price: reqbody.price,
+    date: new Date()
   })
   const url = req.protocol+'://'+req.get("host");
   if (req.file) {
     post.image= url+"/uploads/"+ req.file.filename;
   }
   else{ post.image=req.protocol+'://'+req.get("host")+"/uploads/default.jpg"}
-      post.save().then((_post)=>{
-        addNotification("","New Post Added:"+ _post.title);
-        res.status(200).json({message:"post Done"});
-      }).catch(err=>{console.log(err);
-      })
+  post.save().then((_post)=>{
+    console.log(req.body.userid);
+    
+    // addNotification("","New Post Added:"+ _post.title);
+    User.findByIdAndUpdate(req.body.userid,{$push:{Posts:_post._id}},(err,ress)=>{
+      if(err)console.log(err);
+      else{console.log(ress);
+      }
+      
+    });
+    res.status(200).json({message:"post Done"});
+  }).catch(err=>{console.log(err);
+  })
 }
 exports.Categories =  (req ,res)=>{
   Cat.find({},(err, cats)=>{
@@ -75,11 +84,21 @@ exports.GetPosts =  (req ,res)=>{
   })
 };
 
+// exports.GetUser =  (req ,res)=>{
+//   console.log(req.body._id);
+//   User.findById(req.body._id).populate('posts').then(user=>{
+//     console.log(user);
+//     res.status(200).json({message:"User", data:user });
+    
+//   })
+// };
+
 exports.GetUser =  (req ,res)=>{
   console.log(req.body._id);
-  User.findById(req.body._id,(err, _data)=>{
+  User.findById(req.body._id).populate('Posts').exec(function (err, _data) {
+    console.log(_data);
     res.status(200).json({message:"User", data:_data });
-  })
+  });
 };
 
 exports.UpdateUser =  (req ,res)=>{
