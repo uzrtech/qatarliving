@@ -6,6 +6,7 @@ const NewsSchema = mongoose.Schema({
     date: {type:String},
     category: {type:String},
     views:{type:Number},
+    comments:[{type: mongoose.Schema.Types.ObjectId, ref:'User'}],
     tags:[{type:String}],
     image :{ type : String},
 });
