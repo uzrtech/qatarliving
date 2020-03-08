@@ -45,7 +45,10 @@ export class DashboardComponent implements OnInit {
     )
   }
   addExtra(cate){console.log(cate);}
-  addField(cat,val){cat.fields.push(val); console.log(cat);
+  addField(cat,val){
+    console.log(val);
+    if(val.values){val.values=val.values.split(',')}
+    cat.fields.push(val); console.log(cat);
   }
 
   addNewCat(val){

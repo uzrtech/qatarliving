@@ -12,7 +12,7 @@ const PostSchema = mongoose.Schema({
     make:{type:String},
     bedrooms:{type:String},
     washrooms:{type:String},
-    fields:[{title:{type:String}, value:{type:String}, icon:{type:String}}],
+    fields:[{title:{type:String}, value:{type:String}, icon:{type:String},values:{type:[String]}}],
     price :{ type : String},
     image :{ type : String},
     date: {type: Date}

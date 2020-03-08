@@ -58,9 +58,13 @@ exports.Notifications =  (req ,res)=>{
 };
 
 exports.CategoriesUpdate =  (req ,res)=>{
+  console.log(req.body.fields);
+  
   Cat.findByIdAndUpdate(req.body._id,req.body,(err, cat)=>{
     if(err){console.log(err);}
-    addNotification("Admin","Categories Updated:"+ cat.name);
+    console.log(cat);
+    
+    //addNotification("Admin","Categories Updated:"+ cat.name);
 
     res.status(200).json({message:"Categories", data:cat });
   })
@@ -81,6 +85,12 @@ exports.CategoriesAdd =  (req ,res)=>{
 exports.GetPosts =  (req ,res)=>{
   Post.find({},(err, posts)=>{
     res.status(200).json({message:"Posts", posts:posts });
+  })
+};
+exports.GetPost =  (req ,res)=>{
+  console.log('posdpasf');
+  Post.findById(req.body._id,(err, post)=>{
+    res.status(200).json({message:"Post", post:post });
   })
 };
 

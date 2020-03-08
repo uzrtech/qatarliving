@@ -25,6 +25,8 @@ import { HomeSideComponent } from './home/home-side/home-side.component';
 import { HeaderComponent } from './home/header/header.component';
 import { SearchComponent } from './home/search/search.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SingleAdComponent } from './home/single-ad/single-ad.component';
+import { NewsComponent } from './home/news/news.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     HomeSideComponent,
     HeaderComponent,
     SearchComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    SingleAdComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,

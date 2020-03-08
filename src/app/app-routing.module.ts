@@ -1,3 +1,5 @@
+import { NewsComponent } from './home/news/news.component';
+import { SingleAdComponent } from './home/single-ad/single-ad.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SearchComponent } from './home/search/search.component';
 import { HeaderComponent } from './home/header/header.component';
@@ -31,6 +33,8 @@ const routes: Routes = [
     // {path:'profile', component: UserProfileComponent},
     {path:'search/:category/:sub', component:SearchComponent},
     {path:'search/:category', component:SearchComponent},
+    {path:'news', component:NewsComponent},
+    {path:'single/:id', component:SingleAdComponent},
     {path:'post', component:PostComponent,canActivate: [AuthGuard]},
     { path: 'profile', canActivate:[AuthGuard], loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
   ]},

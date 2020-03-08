@@ -150,13 +150,14 @@
                                       </mat-panel-title>
                                     </mat-expansion-panel-header>
                                     <form  #addForm="ngForm" (ngSubmit)="addField(cate,addForm.value)">
-                                    <input type="text" ngModel name="title" placeholder="Title ; Ex: City" class="form-control">
-                                      <select ngModel name="type" class="form-control">
+                                    <input type="text"  ngModel name="title" placeholder="Title ; Ex: City" class="form-control">
+                                      <select ngModel #typeO name="type" class="form-control">
                                         <option value="text">Text</option>
                                         <option value="number">Number</option>
                                         <option value="option">Option</option>
                                         <option value="check">Check</option>
                                       </select>
+                                    <input *ngIf="typeO.value=='option'" type="text" ngModel name="values"  style="width: 100% !important;" placeholder="Option values separated by ," class="form-control">
                                     <input type="text" ngModel name="icon" placeholder="Icon ; Ex: fa fas-key" class="form-control">
                                     <button type="submit" class="btn btn-link">Add</button>
                                     </form>

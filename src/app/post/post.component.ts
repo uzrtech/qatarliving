@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  Directive, Input , ViewChild, ElementRef} from '@angular/core';
 import { HomeService} from '../home.service';
-import { log } from 'util';
+import {} from "googlemaps";
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+  @ViewChild('mapContainer', {static: true}) gmap: ElementRef;
+  map: google.maps.Map;
 
   constructor(private homeService: HomeService) { }
   states = ['Arizona','California','Colorado','New York','Pennsylvania',
@@ -26,10 +28,33 @@ export class PostComponent implements OnInit {
   type;
   Selected_SubCategory;
   ngOnInit() {
+    var mapProp = {
+      center: new google.maps.LatLng(30.3, 69.3),
+      zoom: 6,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    this.map = new google.maps.Map(this.gmap.nativeElement, mapProp);
+
+    google.maps.event.addListener(this.map, 'click', function(event) {
+      this.addMarker(event.latLng, this.map);
+    });
+
+
+
     this.homeService.GetCategories().subscribe(Cats=>{
       this.Categories = Cats.data;
     })
   }
+
+   addMarker(location, map) {
+    // Add the marker at the clicked location, and add the next-available label
+    // from the array of alphabetical characters.
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+  }
+
   CategoryChange(index){
     if(index==0){this.Selected_Category=null;return};
     this.Selected_Category =this.Categories[index-1];
@@ -70,6 +95,8 @@ export class PostComponent implements OnInit {
       this.Selected_SubCategory.fields.forEach(element => {
         data.fields.push({title:element.title,icon:element.icon,value:values[element.title]})
       });
+      console.log(data);
+      
      this.homeService.AddPost(data,this.fileData)
      .subscribe(val=>{this.loading=false;this.posted=true; console.log("posted="+val);})
   }

@@ -92,7 +92,7 @@
                         <div class="property-wrap">
                           <div class="property-item">
                             <div class="item-thumb">
-                              <a class="hover-effect" href="property.html">
+                              <a class="hover-effect" [routerLink]="[ '/single', _post._id ]">
                                 <img class="img-fluid" [src]="_post.image" alt="">
                               </a>
                               <div class="label-inner">
@@ -100,7 +100,7 @@
                               </div>
                             </div>
                             <div class="item-body">
-                              <h3 class="property-title"><a href="property.html">{{_post.title}}</a></h3>
+                              <h3 class="property-title"><a [routerLink]="[ '/single', _post._id ]">{{_post.title}}</a></h3>
                               <div class="adderess">{{_post.des}}</div>
                               <!-- <div *ngFor="let f of _post.fields"><div class="adderess"><i [class]="f.icon"></i>{{f.title}}:<span class="m-1">{{f.value}}</span></div></div> -->
                               <div class="pricin-list">

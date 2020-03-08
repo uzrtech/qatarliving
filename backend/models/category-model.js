@@ -10,7 +10,7 @@ const CategorySchema = mongoose.Schema({
         sub:{type: [String]}
     }],
     fields:[
-        {title:{type:String},type:{type:String},icon:{type:String}}
+        {title:{type:String},type:{type:String},icon:{type:String},values:{type:[String]}}
     ]
 });
 
