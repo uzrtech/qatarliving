@@ -1,7 +1,8 @@
 
-            <!-- Intro Section Start 
+            <!-- Intro Section Start -->
             <div class="search-container">
                 <div class="container">
+                  <form #searchForm="ngForm" (ngSubmit)="searchfilter(searchForm.value)">
                   <div class="row">
                     <div class="col-12">
                       <div class="section-title-header text-center">
@@ -11,64 +12,23 @@
                   </div>
                   <div class="content">
                     <div class="row">
-                      <div class="col-lg-3 col-md-6 col-xs-12">
-                        <div class="search-category-container">
-                          <label class="styled-select">
-                            <select class="classic" id="category" name="category" (change)="CategoryChange($event.target.selectedIndex)" placeholder="Select Category">
-                              <option value="0">-- All --</option>
-                              <option *ngFor="let cat of Categories" [value]="cat.name">{{cat.name}}</option>
-                            </select>
-                          </label>
+                      <div *ngFor="let search of Searchable" class="col-lg-3 col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="inputEmail">{{search.title}}</label>
+                          <input type="email" class="form-control" ngModel [name]="search.title" [id]="search.title" [placeholder]="search.title">
                         </div>
                       </div>
-                      <div class="col-lg-3 col-md-6 col-xs-12">
-                        <div class="search-category-container">
-                          <label class="styled-select">
-                            <select class="classic" (change)="SubCategoryChange($event.target.selectedIndex)">
-                              <option>-- All --</option>
-                              <option *ngFor="let cat of SubCategories">{{cat.name}}</option>
-                            </select>
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 col-xs-12">
-                        <div class="search-category-container">
-                          <label class="styled-select">
-                            <select class="classic" (change)="TypeChange($event.target.selectedIndex)">
-                              <option>Type</option>
-                              <option *ngFor="let ty of types">{{ty}}</option>
-                            </select>
-                          </label>
-                        </div>
-                      </div>
-                      
                     </div>
-                    
                     <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-md-12 text-left">
-                        <mat-accordion>
-                          <mat-expansion-panel>
-                            <mat-expansion-panel-header>
-                              <mat-panel-title>
-                               + More Options
-                              </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            
-                            
-                            <div class="row " >
-                              
-                            </div>
-                        
-                          </mat-expansion-panel>
-                        </mat-accordion>
-                        
+                      <div class="col">
+                        <button type="submit" class="btn btn-primary float-right" >Search</button>
                       </div>
                     </div>
-        
                   </div>
+                </form>
                 </div>
               </div>
-               Intro Section End -->
+              <!-- Intro Section End -->
           
               <!-- Property Section Start -->
               <section class="property section-padding">

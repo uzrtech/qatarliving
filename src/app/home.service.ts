@@ -19,12 +19,12 @@ export class HomeService {
     })
     
    }
-  GetCategories(){ return this.Http.get<{message:string, data:String}>(this.url+'/api/categories') }
+  GetCategories(){ return this.Http.get<{message:string, data:String,newsCategories:String}>(this.url+'/api/categories') }
   GetPosts(){ return this.PostSub.asObservable(); }
   AddPost(post,file:File){
-    // const formData = new FormData();
-    // formData.append('image', file);
-    // formData.append('title', post.title);
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append('post',post);
     // formData.append('des', post.des);
     // formData.append('price', post.price);
     // if(post.city){formData.append('city', post.city);}
@@ -33,7 +33,7 @@ export class HomeService {
     // formData.append('category', post.category);
     // formData.append('subcategory', post.subcategory);
     // formData.append('type', post.type);
-    post.userid=localStorage.getItem('_id');
+    
     return this.Http.post<{message:string,data:string}>(this.url+'/api/post',post);
   }
   

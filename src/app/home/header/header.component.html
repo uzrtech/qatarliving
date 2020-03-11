@@ -105,7 +105,6 @@
                                                               <li *ngFor="let cat  of Categories"><a [routerLink]="[ '/search', cat.name,'' ]">{{cat.name}}</a></li>
                                                             </ul>
                                                       <div class="menu-mobile-collapse-trigger"><span></span></div></li>
-                                                     
                                                 </ul>
                                                 <ul class="menu-links" style="display: block; max-height: 400px; overflow: auto;">
 
@@ -124,20 +123,24 @@
                                                     </ul> -->
                                                     </li>
                                                     <li class="hoverTrigger">
-                                                      <a href="#">Headers  
+                                                      <a routerLink="/admin">Headers  
                                                         <i class="fa fa-angle-down fa-indicator"></i>
                                                       </a>
                                                       <p>Headers Headers
                                                       </p>
                                                      
                                                     </li>
-                                                    <li class="hoverTrigger"><a routerLink="/news">News <i class="fa fa-angle-down fa-indicator"></i><div class="mobileTriggerButton"></div></a>
+                                                    <li class="hoverTrigger"><a routerLink="/news">News <i class="fa fa-angle-down fa-indicator"></i><div class="mobileTriggerButton"></div>
+                                                    </a>
+                                                    <p *ngFor="let NCat of NewsCategories">
+                                                      <!-- {{sub.name}} -->
+                                                      <a [routerLink]="[ '/news' ]">{{NCat.category}}  </a>
+                                                    </p>
                                                     </li>
                                                     <li class="hoverTrigger"><a href="#">Categories  <i class="fa fa-angle-down fa-indicator"></i><div class="mobileTriggerButton"></div></a>
                                                       <ul class="drop-down-multilevel grid-col-12 effect-expand-top" style="transition: all 400ms ease 0s;"><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/category-classic/">Category 1  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/modern-variation/">Category 2  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/minimal-veriation/">Category 3  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/fancy-veriation/">Category 4  </a></li><li class="hoverTrigger"><a href="http://adforest.scriptsbundle.com/flat-variation/">Category 5  </a></li>
                                                       </ul>
                                                     </li>
-                                                    
                                                     <li class="hoverTrigger"><a href="#">Demos<i class="fa fa-angle-down fa-indicator"></i>
                                                           <div class="mobileTriggerButton"></div></a>
                                                           <div class="drop-down   grid-col-4 effect-expand-top" style="transition: all 400ms ease 0s;">

@@ -27,6 +27,10 @@ import { SearchComponent } from './home/search/search.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SingleAdComponent } from './home/single-ad/single-ad.component';
 import { NewsComponent } from './home/news/news.component';
+import { AdminNewsComponent } from './admin/admin-news/admin-news.component';
+import { NewsPipe } from './home/news/news.pipe';
+import { CatFieldsComponent } from './admin/cat-fields/cat-fields.component';
+import { SearchFieldsComponent } from './admin/search-fields/search-fields.component';
 
 
 @NgModule({
@@ -49,7 +53,11 @@ import { NewsComponent } from './home/news/news.component';
     SearchComponent,
     UserProfileComponent,
     SingleAdComponent,
-    NewsComponent
+    NewsComponent,
+    AdminNewsComponent,
+    NewsPipe,
+    CatFieldsComponent,
+    SearchFieldsComponent,
   ],
   imports: [
     BrowserModule,

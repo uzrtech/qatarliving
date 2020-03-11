@@ -1,3 +1,4 @@
+import { log } from 'util';
 import { Component, OnInit } from '@angular/core';
 import {ChangeDetectorRef  } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
@@ -10,6 +11,7 @@ import { HomeService } from 'src/app/home.service';
 export class HeaderComponent implements OnInit {
   mobileQuery: MediaQueryList;
   Categories;
+  NewsCategories;
 
   private _mobileQueryListener: () => void;
 
@@ -26,8 +28,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.HomeService.GetCategories().subscribe(Cats=>{
       this.Categories = Cats.data;
-      console.log(this.Categories);
+      this.NewsCategories= Cats.newsCategories;
+      console.log(this.NewsCategories);
       
+      console.log(this.Categories);
     })
   }
 

@@ -13,6 +13,7 @@ app.use(cors())
 // Include controllers from Controllers folder
 const authController = require('./controllers/auth-controller');
 const homeController = require('./controllers/home-controller');
+const newsController = require('./controllers/news-controller');
 
 // Include Multer to handle file upload
 const multer = require('multer');
@@ -86,8 +87,14 @@ app.post("/api/getuser",homeController.GetUser);
 app.post("/api/updateuser",homeController.UpdateUser);
 app.post("/api/updateuserpass",homeController.UpdateUserPass);
 
-
-
+//news
+app.get("/api/news",newsController.GetNews);
+app.post("/api/news",newsController.GetNewsbyID);
+app.post("/api/news/add",upload.single('image'),newsController.AddNews);
+app.post("/api/news/update",newsController.UpdateNews);
+app.post("/api/news/delete",newsController.DeleteNews);
+app.post("/api/news/cate/add",newsController.AddCate);
+app.post("/api/news/cate/delete",newsController.DeleteCate);
 
 
 

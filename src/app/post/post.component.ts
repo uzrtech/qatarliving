@@ -78,27 +78,27 @@ export class PostComponent implements OnInit {
     else{
       this.loading=true;
       this.EMessage="";
+      var dataa = new FormData();
+      dataa.append('category', this.Selected_Category.name,);
+      dataa.append('subcategory', this.Selected_SubCategory.name);
+      dataa.append('type', this.type);
+      dataa.append('title',values.title);
+      dataa.append('des',values.des);
+      dataa.append('userid',localStorage.getItem('_id'))
+      dataa.append('price',values.price);
+      dataa.append('image', this.fileData,'image');
       var fields=[];
-      var data=
-      {
-        category:this.Selected_Category.name,
-        subcategory:this.Selected_SubCategory.name,
-        type:this.type,
-        title:values.title,
-        des:values.des,
-        price:values.price,
-        fields:[]
-      }
       this.Selected_Category.fields.forEach(element => {
-        data.fields.push({title:element.title,icon:element.icon,value:values[element.title]})
+        var e ={title:element.title,icon:element.icon,value:values[element.title]};
+        fields.push(e)
       });
       this.Selected_SubCategory.fields.forEach(element => {
-        data.fields.push({title:element.title,icon:element.icon,value:values[element.title]})
+        var e ={title:element.title,icon:element.icon,value:values[element.title]};
+        fields.push(e)
       });
-      console.log(data);
-      
-     this.homeService.AddPost(data,this.fileData)
-     .subscribe(val=>{this.loading=false;this.posted=true; console.log("posted="+val);})
+      dataa.append('fields',JSON.stringify(fields));
+      this.homeService.AddPost(dataa,this.fileData)
+      .subscribe(val=>{this.loading=false;this.posted=true; console.log("posted="+val);})
   }
   }
   fileProgress(fileInput: any) {

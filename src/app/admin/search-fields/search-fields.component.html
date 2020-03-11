@@ -1,0 +1,51 @@
+
+
+<div class="main-panel">
+    <div class="content">
+        <div class="panel-header bg-primary-gradient">
+            <div class="page-inner py-5">
+                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                    <div>
+                        <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
+                        <h5 class="text-white op-7 mb-2">Free Bootstrap 4 Admin Dashboard</h5>
+                    </div>
+                    <div class="ml-md-auto py-2 py-md-0">
+                        <a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
+                        <a href="#" class="btn btn-secondary btn-round">Add Customer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-inner mt--5">
+            <div class="row mt--2">
+                <div class="col-md-6">
+                    <div class="card full-height">
+                        <div class="card-body">
+                            <div class="card-title">Fields</div>
+                            <mat-accordion>
+                                <mat-expansion-panel *ngFor="let cate of Categories">
+                                  <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                     {{cate.name}}
+                                    </mat-panel-title>
+                                  </mat-expansion-panel-header>
+                                  <div *ngFor="let field of cate.fields" class="form-check">
+                                    <input class="form-check-input" (change)="checkChange(field)" [(ngModel)]="field.search" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      {{field.title}}
+                                    </label>
+                                  </div>
+                                  <button (click)="saveCats(cate)" class="btn btn btn-link btn-primary float-right btn-sm">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Save</button>
+                                </mat-expansion-panel>
+                              </mat-accordion>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        
+        </div>
+    </div>
+</div>

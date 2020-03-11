@@ -2,6 +2,7 @@ const multer = require('multer');
 var upload = multer({ dest: 'uploads/' });
 const Post = require('../models/post-model');
 const User = require('../models/user_model');
+const NewsC = require('../models/news-category-model');
 const date = new Date();
 const Cat = require('../models/category-model');
 const Notification = require('../models/notification-model');
@@ -17,7 +18,7 @@ exports.AddPost = (req ,res ,next)=>{
     category: reqbody.category,
     subcategory: reqbody.subcategory,
     type: reqbody.type,
-    fields: req.body.fields,
+    fields: JSON.parse(reqbody.fields),
     price: reqbody.price,
     date: new Date()
   })
@@ -27,14 +28,10 @@ exports.AddPost = (req ,res ,next)=>{
   }
   else{ post.image=req.protocol+'://'+req.get("host")+"/uploads/default.jpg"}
   post.save().then((_post)=>{
-    console.log(req.body.userid);
-    
+    console.log(_post);
     // addNotification("","New Post Added:"+ _post.title);
     User.findByIdAndUpdate(req.body.userid,{$push:{Posts:_post._id}},(err,ress)=>{
       if(err)console.log(err);
-      else{console.log(ress);
-      }
-      
     });
     res.status(200).json({message:"post Done"});
   }).catch(err=>{console.log(err);
@@ -42,7 +39,9 @@ exports.AddPost = (req ,res ,next)=>{
 }
 exports.Categories =  (req ,res)=>{
   Cat.find({},(err, cats)=>{
-    res.status(200).json({message:"Categories", data:cats });
+    NewsC.find({},(errr,newsC)=>{
+      res.status(200).json({message:"Categories", data:cats, newsCategories:newsC });
+    });
   })
 };
 

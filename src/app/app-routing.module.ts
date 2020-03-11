@@ -1,3 +1,5 @@
+import { SearchFieldsComponent } from './admin/search-fields/search-fields.component';
+import { AdminNewsComponent } from './admin/admin-news/admin-news.component';
 import { NewsComponent } from './home/news/news.component';
 import { SingleAdComponent } from './home/single-ad/single-ad.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -16,10 +18,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {PostComponent} from './post/post.component';
+import { CatFieldsComponent } from './admin/cat-fields/cat-fields.component';
 const routes: Routes = [
   
   {path:"admin", component:AdminComponent, canActivate: [AuthGuard],data: { expectedRole: 'admin'},  children:[
     {path:'', component: DashboardComponent},
+    {path:'news', component: AdminNewsComponent},
+    {path:'fields', component: CatFieldsComponent},
+    {path:'searchfields', component: SearchFieldsComponent},
     {path:'subfields', component: SubCatFieldsComponent}
   ]},
   {path :'auth', component:AuthComponent,children:[

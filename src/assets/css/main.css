@@ -436,7 +436,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 #page-banner-area {
-  background: url(../img/background/banner.jpg) no-repeat;
+  background: url(../img/blog/banner.jpg) no-repeat;
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -943,7 +943,6 @@ intro section style
   display: inline-block;
   width: 100%;
   position: relative;
-  text-align: center;
 }
 
 .search-container .intro-sub-heading {
@@ -1565,8 +1564,7 @@ select.classic {
   height: 17px;
   margin-top: 5px;
   left: 0;
-  border: 1px solid #e5e5e5;
-  border-radius: 4px;
+  border-right: 1px solid #1269db;
   -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
   -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
   transition: border 0.15s ease-in-out, color 0.15s ease-in-out;

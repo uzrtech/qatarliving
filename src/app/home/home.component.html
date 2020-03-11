@@ -121,8 +121,7 @@
                   </div>
                   <div class="col-12">
                     <div class="text-center">
-                      <h4 *ngIf="Posts" class="btn btn-common">Browse All</h4>
-                      <a href="listing.html" class="btn btn-common">Browse All</a>
+                      <button [routerLink]="['/search', sec.name]" class="btn btn-common">Browse All</button>
                     </div> 
                   </div>  
                 </div>
