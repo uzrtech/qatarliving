@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
-
   constructor(private http: HttpClient) { }
   News;
   Categories;
