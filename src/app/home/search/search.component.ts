@@ -50,34 +50,28 @@ CategoryChange(val){
   this.router.navigate(['/search',this.Categories[val-1].name])
 }
 searchfilter(values){
+  this.Posts = this.OPosts;
+  var XKeys = Object.keys(values);
+  var Xvalues = Object.values(values);
+
+  for (let i = 0; i < XKeys.length; i++) {
+  if(Xvalues[i]==''){console.log('value skipped for '+ XKeys[i]); continue;}    
+  this.Posts = this.OPosts.filter(_post=>{
+    var f = _post.fields.find(field=>{
+      return field.title==XKeys[i];
+    })
+    if(f.value.toLowerCase()==Xvalues[i].toString().toLowerCase()){
+      console.log(f);
+      return true;
+    }
+  })
+    
+  }
   
-         // {city:'city', Bedrooms:'4', Washromoms:'2'}
-
-
-        // category: "Vehicles"
-        // subcategory: "Rental"
-        // type: "Car"
-        // fields: Array(2)
-        // 0: {values: Array(0), _id: "5e638aca2812360ef806e37e", title: "Make", icon: "fa fa-automobile", value: "as"}
-        // 1: {values: Array(0), _id: "5e638aca2812360ef806e37d", title: "Condition", icon: "fa fa-automobile", value: "New"}
-    
-
-
-  // var Xfields = Object.keys(values);
-  // this.Posts = this.OPosts.filter(_post=>{
-  //   var f = _post.fields.forEach(ff => {
-  //     return (ff.title).toLowerCase()==Xfields[0].toString().toLowerCase();
-      
-  //   });
-  //   console.log(f);
-    
-  // })
   // this.Searchable.forEach(element=>{
   //   console.log(element);
   //   this.Posts = this.OPosts.filter(item=>{
-  //     if(values.element.title!=''){
-  //       return item.fields[element.title]==values[element.title];
-  //     }
+      
   //   })
     
   // })
