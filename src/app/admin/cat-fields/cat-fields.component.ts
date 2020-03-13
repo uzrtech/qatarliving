@@ -12,27 +12,39 @@ export class CatFieldsComponent implements OnInit {
   
   url = environment.baseUrl;
   Categories;
+  SCategory;
   new= false;
+  action='add';
   loading=false;
+  edit={title:'',type:'', icon:'',values:''};
   constructor(private Http: HttpClient) { }
 
   ngOnInit() {
     this.Http.get<{message:string, data:string}>(this.url+'/api/categories').subscribe(res=>{
       this.Categories  = res.data;
+      console.log(this.Categories);
+      
+      this.SCategory= this.Categories[0];
       console.log(res.data);
       
   })
   }
-
    addSub(cate){ cate.push({name:'Enter Name', sub:[]}) }
   // addcat(){ this.Categories.push({name:'Enter Name', cat:[]})  }
-  saveCat(cat){
-    this.loading= true;
-    this.Http.post<{message:string, data:string}>(this.url+'/api/categories/update',cat).subscribe(
-      res=>{console.log(res.data);
-        this.loading= false;
-      }
-    )
+  // saveCat(cat){
+  //   this.loading= true;
+  //   this.Http.post<{message:string, data:string}>(this.url+'/api/categories/update',cat).subscribe(
+  //     res=>{console.log(res.data);
+  //       this.loading= false;
+  //     }
+  //   )
+  // }
+  saveCat(){
+    this.loading=true;
+      this.Http.post<{message:string, data:string}>(this.url+'/api/categories/update',this.SCategory).subscribe(
+        res=>{console.log(res.data);this.loading=false;
+        }
+      )
   }
   saveCats(cat){
     console.log(cat);
@@ -44,10 +56,18 @@ export class CatFieldsComponent implements OnInit {
     )
   }
   addExtra(cate){console.log(cate);}
-  addField(cat,val){
-    console.log(val);
-    if(val.values){val.values=val.values.split(',')}
-    cat.fields.push(val); console.log(cat);
+  addNew(){
+    var newF; 
+    newF = {
+      title:this.edit.title,
+      type:this.edit.type,
+      icon:this.edit.icon};
+    if(this.edit.values !=''){
+      console.log('valuess');
+      newF.values=this.edit.values.split(',');
+    }
+    console.log(newF);
+    this.SCategory.fields.push(newF);
   }
 
   addNewCat(val){

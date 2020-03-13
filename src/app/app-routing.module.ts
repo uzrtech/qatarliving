@@ -41,8 +41,8 @@ const routes: Routes = [
     {path:'search/:category', component:SearchComponent},
     {path:'news', component:NewsComponent},
     {path:'single/:id', component:SingleAdComponent},
-    {path:'post', component:PostComponent,canActivate: [AuthGuard]},
-    { path: 'profile', canActivate:[AuthGuard], loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
+    {path:'post', component:PostComponent,data: { expectedRole: 'user'},canActivate: [AuthGuard]},
+    { path: 'profile', canActivate:[AuthGuard],data: { expectedRole: 'user'}, loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
   ]},
   
   

@@ -6,18 +6,15 @@ import { Router} from '@angular/router';
 export class AuthGuard implements CanActivate {
   constructor( private authService: AuthService, private router:Router){}
   canActivate(route:ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    const expectedRole = route.data.expectedRole;
-
-    if(expectedRole=='admin'){
-      var role= localStorage.getItem('role');
-      if(expectedRole==role){
-        return true;
-      }
-      this.router.navigate(['/auth/admin']);
-      return false;
-    }
     var token = localStorage.getItem('token');
-    if(token){ return true};
-    this.router.navigate(['/auth']);
+    const expectedRole = route.data.expectedRole;
+    var role= localStorage.getItem('role');
+
+    if(token && expectedRole== role){
+      return true;
+    }
+    else{
+      this.router.navigate(['/auth']);
     return false;}
+    }
 }

@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="page-inner mt--5">
-            <div class="row mt--2">
+            <!-- <div class="row mt--2">
                 <div class="col-md-8">
                     <div class="card full-height">
                         <div class="card-body">
@@ -80,7 +80,103 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
+
+
+
+
+
+            <div class="row mt--2">
+              <div class="col-md-4">
+                  <div class="card">
+                      <div class="card-body">
+                          <div class="card-title">Categories Fields</div>
+                            <button *ngFor="let cat of Categories" (click)="SCategory=cate;cate=cat;" class="btn btn-link btn-sm d-block">{{cat.name}}</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-8">
+                  <div class="card">
+                      <div *ngIf="SCategory" class="card-header">
+                          <h4 class="card-title">{{SCategory.name}}</h4>
+                          <button (click)="saveCat()" class="ml-1 mr-1 btn btn-primary btn-sm float-right">Save
+                           <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+
+                          </button>
+                          <button (click)="action ='add'" class="btn btn-primary btn-sm float-right">Add New</button>
+                        </div>
+                        <div  class="form-inline">
+
+                          <div class="form-group ">
+                            <input type="text"  [(ngModel)]="edit.title" name="title" class="form-control" id="staticEmail2" placeholder="Title"  >
+                          </div>
+                          <div class="form-group ">
+                            <select class="form-control" #typeO [(ngModel)]="edit.type" name="type" id="type">
+                              <option value="text">Text</option>
+                              <option value="number">Number</option>
+                              <option value="checkbox">CheckBox</option>
+                              <option value="option">Option</option>
+                            </select>
+                          </div>
+                          <div class="form-group ">
+                            <input type="text" [(ngModel)]="edit.icon" name="icon" class="form-control m-1" id="inputword2" placeholder="Icon">
+                          </div>
+                          <input *ngIf="typeO.value=='option'" type="text"  [(ngModel)]="edit.values" name=""  style="width: 100% !important;" placeholder="Option values separated by ," class="form-control">
+                          <button *ngIf="action=='add'" type="button" (click)="addNew()" class="btn btn-link btn-primary float-right">Add</button>
+                          <button *ngIf="action=='edit'" type="button" (click)="saveCat()" class="btn btn-primary btn-link float-right">Save</button>
+                        </div>
+
+                        <div class="card-content">
+                          <div class="card-body">
+                            <table class="table table-responsive-sm text-center">
+                              <thead>
+                                <tr>
+                                  <th>Title</th>
+                                  <th>Type</th>
+                                  <th>Icon</th>
+                                  <th>Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let field of SCategory.fields">
+                                  <td>{{field.title}}</td>
+                                  <td>{{field.type}}</td>
+                                  <td>{{field.icon}}</td>
+                                  <td>
+                                    <a (click)="action='edit';edit=field" class="m-1 info p-0 text-primary">
+                                      <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a (click)="SCategory.fields.splice(SCategory.fields.indexOf(field),1)" class="m-1 info p-0 text-primary">
+                                      <i class="fa fa-trash"></i>
+                                    </a>
+                                  </td>
+                                </tr>
+                               
+                              </tbody>
+                            </table>
+                          
+                          </div>
+                        </div>
+                  </div>
+              </div>
+
+          </div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+            
         
         </div>
     </div>

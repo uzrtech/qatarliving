@@ -24,6 +24,8 @@ export class SubCatFieldsComponent implements OnInit {
   ngOnInit() {
     this.Http.get<{message:string, data:string}>(this.url+'/api/categories').subscribe(res=>{
       this.Categories  = res.data;
+      console.log(this.Categories);
+      
       this.cate=this.Categories[0];
       this.S_subcategory = this.Categories[0].cat[0];
       })

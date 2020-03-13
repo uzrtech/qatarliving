@@ -19,6 +19,7 @@ export class AuthService {
     .subscribe((userData)=>{
       localStorage.setItem('token', userData.token);
       localStorage.setItem('_id', userData._id);
+      localStorage.setItem('role', 'user');
       this.openSnackBar("Login Successful", '');
       this.router.navigate(['/profile']);
     },
