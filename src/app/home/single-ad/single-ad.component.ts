@@ -18,9 +18,6 @@ export class SingleAdComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params=>{
       this.postID = params['id'];
-      console.log(this.postID);
-      console.log(this.url);
-      
       this.Http.post<{message:String, post:String}>(this.url+'/api/singlepost',{_id:this.postID}).subscribe(post=>{
         this.post = post.post;
         console.log(this.post);

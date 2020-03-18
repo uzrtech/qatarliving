@@ -31,7 +31,9 @@ import { AdminNewsComponent } from './admin/admin-news/admin-news.component';
 import { NewsPipe } from './home/news/news.pipe';
 import { CatFieldsComponent } from './admin/cat-fields/cat-fields.component';
 import { SearchFieldsComponent } from './admin/search-fields/search-fields.component';
-
+import { NewspipePipe } from './admin/admin-news/newspipe.pipe';
+import {MatStepperModule} from '@angular/material/stepper';
+import { ShowroomsComponent } from './home/showrooms/showrooms.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { SearchFieldsComponent } from './admin/search-fields/search-fields.compo
     NewsPipe,
     CatFieldsComponent,
     SearchFieldsComponent,
+    NewspipePipe,
+    ShowroomsComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,8 @@ import { SearchFieldsComponent } from './admin/search-fields/search-fields.compo
     ReactiveFormsModule,
     MatProgressSpinnerModule,MatExpansionModule,
     BrowserAnimationsModule,
-    MatSidenavModule,MatIconModule,MatToolbarModule,MatListModule,MatMenuModule, MatSnackBarModule
+    MatSidenavModule,MatIconModule,MatToolbarModule,MatListModule,MatMenuModule, MatSnackBarModule,
+    MatStepperModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

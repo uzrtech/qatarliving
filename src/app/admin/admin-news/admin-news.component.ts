@@ -19,6 +19,7 @@ export class AdminNewsComponent implements OnInit {
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
   Categories;
+  searchValue;
   url= environment.baseUrl;
   ngOnInit() {
     this.http.get<{message:String, news:String, categories:String}>(this.url+'/api/news').subscribe(data=>{

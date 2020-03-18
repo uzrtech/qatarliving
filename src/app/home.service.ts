@@ -43,4 +43,15 @@ export class HomeService {
       this.PostSub.next(this.Posts);
     })
   }
+  GetUser( ){
+    var id = localStorage.getItem('_id');
+    return this.Http.post<{message:String, data:String}>(this.url+"/api/getuser",{_id: id});
+  }
+
+  AddPostShowroom( post_id){
+    var id = localStorage.getItem('_id');
+    return this.Http.post<{message:String, data:String}>(this.url+"/api/getuser",{_id: id});
+  }
+
+
 }

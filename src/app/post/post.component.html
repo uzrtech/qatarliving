@@ -199,17 +199,51 @@
           </div>
         </div>
       </div>
+
+
+
+
+
       <div class="content">
-          <form #postForm="ngForm" (ngSubmit)="formSubmit(postForm.value)">
+ 
+
+        <mat-vertical-stepper #stepper>
+          <mat-step label="Select Category" >
             <div class="row">
+              <div class="col-md-2" *ngFor="let category of Categories">
+                <button (click)="Selected_Category=category" matStepperNext class="card btn">
+                  <div class="card-body">
+                    {{category.name}}
+                  </div>
+                </button>
+              </div>
+            </div>
+            <!-- <button class="btn btn-primary" matStepperNext>Next</button> -->
+          </mat-step>
+
+          <mat-step label="Select Sub Category">
+            <div *ngIf="Selected_Category" class="row">
+              <div class="col-md-2 m-1" *ngFor="let Scategory of Selected_Category.cat">
+                <button (click)="Selected_SubCategory=Scategory;" matStepperNext class="card btn">
+                  <div class="card-body">
+                    {{Scategory.name}}
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div *ngIf="!Selected_Category" class="row">
+              <h4 class="text-danger">Select Category First</h4>
+            </div>
+            <!-- <button class="btn btn-primary" matStepperNext>Next</button> -->
+          </mat-step>
+          <mat-step label="Details">
+            <div *ngIf="Selected_SubCategory" class="row">
               <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" >
-                
                 <h3>Choose File</h3>      
                 <div class="d-flex image-preview mb-3" *ngIf="previewUrl">
                   <img class="img-fluid" alt="Responsive image" [src]="previewUrl" />                 
                 </div>      
                 <div class="form-group">
-                    
                 </div>
                 <div *ngIf="fileUploadProgress">
                     Upload progress: {{ fileUploadProgress }}
@@ -217,136 +251,138 @@
                 <div class="mb-3" *ngIf="uploadedFilePath">
                     {{uploadedFilePath}}
                 </div>
-                
                 <div class="form-group">
                   <input type="file" value="Choose File" name="image" (change)="fileProgress($event)" />
-                 
                 </div>
               </div>
               <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12" >
                 <div class="row">
                   <div class="col-lg-4 col-md-6 col-xs-12">
-                    <div class="search-category-container">
-                      <label class="styled-select">
-                        <select class="classic" id="category" name="category" (change)="CategoryChange($event.target.selectedIndex)" placeholder="Select Category">
-                          <option value="0">Select Category</option>
-                          <option *ngFor="let cat of Categories">{{cat.name}}</option>
-                        </select>
-                      </label>
+                    <div *ngIf="User.showroom.length>0" class="form-check">
+                      <input type="checkbox" [(ngModel)]="ShowroomPost" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Post in My Showroom</label>
                     </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-xs-12">
-                    <div class="search-category-container" *ngIf="Selected_Category">
-                      <label class="styled-select">
-                        <select class="classic" (change)="SubCategoryChange($event.target.selectedIndex)">
-                          <option>Sub Category</option>
-                          <option *ngFor="let cat of SubCategories">{{cat.name}}</option>
-                        </select>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-xs-12">
-                    <div class="search-category-container" *ngIf="Selected_SubCategory">
-                      <label class="styled-select">
-                        <select class="classic" (change)="TypeChange($event.target.selectedIndex)">
-                          <option>Type</option>
-                          <option *ngFor="let ty of types">{{ty}}</option>
-                        </select>
-                      </label>
-                    </div>
+
+                    <select *ngIf="ShowroomPost" class="classic m-1" (change)="SelectShowroom($event.target.selectedIndex)">
+                      <option>Showroom</option>
+                      <option *ngFor="let showroom of User.showroom">{{showroom.title}}</option>
+                    </select>
                   </div>
                 </div>
-                <div class="row">
-                 
-                  <div class="col-lg-4 col-md-6 col-xs-12">
-                      <div class="form-group">
-                          <input type="text" ngModel class="form-control" id="title" name="title" placeholder="Title" required="" data-error="Please enter your Title">
-                          <div class="help-block with-errors"></div>
-                      </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-xs-12">
-                      <div class="form-group">
-                          <input type="text" ngModel class="form-control" id="des" name="des" placeholder="Description" required="" data-error="Please enter your Description">
-                          <div class="help-block with-errors"></div>
-                      </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-xs-12">
-                      <div class="form-group">
-                          <input type="number" ngModel class="form-control" id="price" name="price" placeholder="Price" required="" data-error="Please enter your Price">
-                          <div class="help-block with-errors"></div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 text-left">
-                  <mat-accordion *ngIf="Selected_Category">
-                    <mat-expansion-panel>
-                      <mat-expansion-panel-header>
-                        <mat-panel-title>
-                         + More Options
-                        </mat-panel-title>
-                      </mat-expansion-panel-header>
+                <form #postForm="ngForm" (ngSubmit)="formSubmit(postForm.value)">
                       <div class="row">
-                        <div *ngFor="let f of Selected_Category.fields" class="col-lg-4 col-md-4 col-sm-6 ">
-                          <div *ngIf="f.type!='checkbox' && f.type!='option'" class="form-group">
-                            <input ngModel [name]="f.title" [type]="f.type" [placeholder]="f.title" class="form-control">
-                          </div>
-                          <div *ngIf="f.type=='checkbox'" class="form-check">
-                            <label>
-                              <input type="checkbox" ngModel [name]="f.title" class="form-check-input">{{f.title}}
-                            </label>
-                          </div>
-                          <div *ngIf="f.type=='option'"  class="form-group">
-                              <select class="form-control" ngModel [name]="f.title" id="exampleFormControlSelect1">
-                                <option value="0">{{f.title}}</option>
-                                <option *ngFor="let val of f.values"  [value]="val">{{val}}</option>
+                        <div class="col-lg-4 col-md-6 col-xs-12">
+                          <div *ngIf="Selected_SubCategory">
+                              <select class="classic" (change)="TypeChange($event.target.selectedIndex)">
+                                <option>Type</option>
+                                <option *ngFor="let ty of Selected_SubCategory.sub">{{ty}}</option>
                               </select>
                           </div>
-                          
                         </div>
                       </div>
-                      <div class="row" *ngIf="Selected_SubCategory">
-                        <div *ngFor="let ff of Selected_SubCategory.fields" class="col-lg-4 col-md-4 col-sm-6 ">
-                          <div *ngIf="ff.type!='checkbox'" class="form-group">
-                            <input ngModel [name]="ff.title" [type]="ff.type" [placeholder]="ff.title" class="form-control">
-                          </div>
-                          <div *ngIf="ff.type=='checkbox'" class="form-check">
-                            <label>
-                              <input type="checkbox" ngModel [name]="ff.title" class="form-check-input">{{ff.title}}
-                            </label>
-                          </div>
+                      <div class="row">
+                        <div class="col-lg-4 col-md-6 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" ngModel class="form-control" id="title" name="title" placeholder="Title" required="" data-error="Please enter your Title">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" ngModel class="form-control" id="des" name="des" placeholder="Description" required="" data-error="Please enter your Description">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12">
+                            <div class="form-group">
+                                <input type="number" ngModel class="form-control" id="price" name="price" placeholder="Price" required="" data-error="Please enter your Price">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                      </div> 
+                      <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 text-left">
+                        <mat-accordion *ngIf="Selected_Category">
+                          <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                               + More Options
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="row">
+                              <div *ngFor="let f of Selected_Category.fields" class="col-lg-4 col-md-4 col-sm-6 ">
+                                <div *ngIf="f.type!='checkbox' && f.type!='option'" class="form-group">
+                                  <input ngModel [name]="f.title" [type]="f.type" [placeholder]="f.title" class="form-control">
+                                </div>
+                                <div *ngIf="f.type=='checkbox'" class="form-check">
+                                  <label>
+                                    <input type="checkbox" ngModel [name]="f.title" class="form-check-input">{{f.title}}
+                                  </label>
+                                </div>
+                                <div *ngIf="f.type=='option'"  class="form-group">
+                                    <select class="form-control" ngModel [name]="f.title" id="exampleFormControlSelect1">
+                                      <option value="0">{{f.title}}</option>
+                                      <option *ngFor="let val of f.values"  [value]="val">{{val}}</option>
+                                    </select>
+                                </div>
+                                
+                              </div>
+                            </div>
+                            <div class="row" *ngIf="Selected_SubCategory">
+                              <div *ngFor="let ff of Selected_SubCategory.fields" class="col-lg-4 col-md-4 col-sm-6 ">
+                                <div *ngIf="ff.type!='checkbox'" class="form-group">
+                                  <input ngModel [name]="ff.title" [type]="ff.type" [placeholder]="ff.title" class="form-control">
+                                </div>
+                                <div *ngIf="ff.type=='checkbox'" class="form-check">
+                                  <label>
+                                    <input type="checkbox" ngModel [name]="ff.title" class="form-check-input">{{ff.title}}
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </mat-expansion-panel>
+                        </mat-accordion>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div *ngIf="EMessage" class="alert alert-danger" role="alert">
+                          {{EMessage}}
+                          <button (click)="EMessage='';" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="text-right mt-3 btn-section">
+                          <button *ngIf="Selected_SubCategory.name=='Showroom'" routerLink="/profile/showroom" type="button" class="btn text-secondary btn-link" >Create a Showroom</button>
+                          <button *ngIf="Selected_SubCategory.name=='Showroom'" type="button" class="btn text-secondary btn-link" >Post in Showroom</button>
+                          <button type="submit" class="btn btn-lg btn-primary">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Post</button>
                         </div>
                       </div>
-                    </mat-expansion-panel>
-                  </mat-accordion>
-                </div>
-                <div class="col-lg-12 col-md-12 col-xs-12">
-                  <div *ngIf="EMessage" class="alert alert-danger" role="alert">
-                    {{EMessage}}
-                    <button (click)="EMessage='';" type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="text-right mt-3 btn-section">
-                    <button type="submit" class="btn btn-lg btn-primary">
-                      <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                      Post</button>
-                  </div>
-                </div>
-                
-              
+                      </div>
+                </form>
               </div>
-
-            
-             </div>
             </div>
+            <div *ngIf="!Selected_SubCategory" class="row">
+              <h4 class="text-danger">Select Sub Category First</h4>
+            </div>
+            <!-- <button class="btn btn-primary" matStepperNext>Next</button> -->
+          </mat-step>
+          <mat-step label="Location" >
             <div class="row">
               <div #mapContainer style="width:100%;height:400px"></div>
-
             </div>
-        
-    </form>
+          </mat-step>
+        </mat-vertical-stepper>
       </div>
+
+
+
+
+
+
+
+
+      
     </div>
   </div>
 
@@ -356,96 +392,3 @@
 
 
 
-
-
-
-
-<!-- 
-  <div class="row range-slider" >
-    <div *ngIf="Selected_Category && Selected_Category.city" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-      <div class="search-category-container">
-        <label class="styled-select">
-          <select name="city" ngModel>
-            <option value="" disabled>Choose a state</option>
-            <option *ngFor="let state of states" [ngValue]="state">
-              {{ state }}
-            </option>
-          </select>
-        </label>
-      </div>
-    </div>
-    <div *ngIf="Selected_Category && Selected_Category.bedrooms" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="search-category-container">
-          <label class="styled-select">
-            <select name="bedrooms" ngModel>
-              <option value="" disabled>Rooms</option>
-              <option>1</option>
-              <option>2</option>                           
-              <option>3</option>                           
-              <option>4</option>                           
-              <option>5</option>   
-            </select>
-          </label>
-        </div>
-    </div>
-    <div *ngIf="Selected_Category && Selected_Category.washrooms" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-      <div class="search-category-container">
-        <label class="styled-select">
-          <select name="washrooms" ngModel>
-            <option value="" disabled>Washrooms</option>
-            <option>1</option>
-            <option>2</option>                           
-            <option>3</option>                           
-            <option>4</option>                           
-            <option>5</option>   
-          </select>
-        </label>
-      </div>
-  </div>
-    <div *ngIf="Selected_Category && Selected_Category.make" class="col-lg-3 col-md-6 col-xs-12">
-      <div class="search-category-container">
-        <label class="styled-select">
-          <select name="make" class="classic" ngModel>
-            <option value="" disabled>Make</option>
-            <option>Audi</option>
-            <option>Bently</option>                           
-            <option>Ferrari</option>                           
-            <option>Fiat</option>                           
-            <option>Honda</option>                           
-            <option>Rover</option>
-          </select>
-        </label>
-      </div>
-  </div>
-  <div *ngIf="Selected_Category && Selected_Category.year" class="col-lg-3 col-md-6 col-xs-12">
-    <div class="search-category-container">
-      <label class="styled-select">
-        <select name="year" class="classic" >
-          <option value="" disabled>Year</option>
-          <option>2011</option>
-          <option>2012</option>                           
-          <option>2013</option>                           
-          <option>2014</option>                           
-          <option>2015</option>                           
-          <option>2016</option>
-          <option>2017</option>
-          <option>2018</option>
-          <option>2019</option>
-          <option>2020</option>
-        </select>
-      </label>
-    </div>
-</div>
-<div *ngIf="Selected_Category && Selected_Category.brand" class="col-lg-3 col-md-6 col-xs-12">
-  <div class="search-category-container">
-    <label class="styled-select">
-      <select name="brand" class="classic">
-        <option value="" disabled>Brand</option>
-        <option>Samsung</option>
-        <option>Nokia</option>                           
-        <option>Lenono</option>    
-      </select>
-    </label>
-  </div>
-</div>
-  </div> -->

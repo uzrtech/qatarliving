@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit,  Directive, Input , ViewChild, ElementRef} from '@angular/core';
 import { HomeService} from '../home.service';
 import {} from "googlemaps";
+import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -10,9 +12,7 @@ export class PostComponent implements OnInit {
   @ViewChild('mapContainer', {static: true}) gmap: ElementRef;
   map: google.maps.Map;
 
-  constructor(private homeService: HomeService) { }
-  states = ['Arizona','California','Colorado','New York','Pennsylvania',
-  ];
+  constructor(private homeService: HomeService,private _formBuilder: FormBuilder, private http: HttpClient) { }
 
   fileData: File = null;
   previewUrl:any = null;
@@ -24,10 +24,20 @@ export class PostComponent implements OnInit {
   SubCategories;
   Selected_Category;
   types;
+  User;
   loading= false;
   type;
+  ShowroomPost=false;
+  Showroom;
   Selected_SubCategory;
+
+
+  isLinear = false;
+
+
   ngOnInit() {
+
+
     var mapProp = {
       center: new google.maps.LatLng(30.3, 69.3),
       zoom: 6,
@@ -39,10 +49,10 @@ export class PostComponent implements OnInit {
       this.addMarker(event.latLng, this.map);
     });
 
-
-
     this.homeService.GetCategories().subscribe(Cats=>{
-      this.Categories = Cats.data;
+      this.Categories = Cats.data; })
+    this.homeService.GetUser().subscribe(data=>{
+      this.User= data.data;
     })
   }
 
@@ -55,18 +65,26 @@ export class PostComponent implements OnInit {
     });
   }
 
-  CategoryChange(index){
-    if(index==0){this.Selected_Category=null;return};
-    this.Selected_Category =this.Categories[index-1];
-    this.SubCategories= this.Categories[index-1].cat;
-    this.Selected_SubCategory= null;
+  checkClick(){
+    console.log('Check');
+    
   }
-  SubCategoryChange(index){
-    this.Selected_SubCategory= this.Selected_Category.cat[index-1];
-    this.types = this.Selected_SubCategory.sub;
+  SelectShowroom(index){
+    this.Showroom= this.User.showroom[index-1];
   }
+
+  // CategoryChange(index){
+  //   if(index==0){this.Selected_Category=null;return};
+  //   this.Selected_Category =this.Categories[index-1];
+  //   this.SubCategories= this.Categories[index-1].cat;
+  //   this.Selected_SubCategory= null;
+  // }
+  // SubCategoryChange(index){
+  //   this.Selected_SubCategory= this.Selected_Category.cat[index-1];
+  //   this.types = this.Selected_SubCategory.sub;
+  // }
   TypeChange(index){
-    this.type= this.types[index-1];
+    this.type= this.Selected_SubCategory.sub[index-1];
   }
   formSubmit(values){
     if(this.Selected_Category==null){this.EMessage="Select Category"}
@@ -78,6 +96,7 @@ export class PostComponent implements OnInit {
     else{
       this.loading=true;
       this.EMessage="";
+
       var dataa = new FormData();
       dataa.append('category', this.Selected_Category.name,);
       dataa.append('subcategory', this.Selected_SubCategory.name);
@@ -86,7 +105,12 @@ export class PostComponent implements OnInit {
       dataa.append('des',values.des);
       dataa.append('userid',localStorage.getItem('_id'))
       dataa.append('price',values.price);
-      dataa.append('image', this.fileData,'image');
+      if(this.ShowroomPost && this.Showroom){
+        dataa.append('showroom',this.Showroom._id);
+      }
+      if(this.fileData){
+        dataa.append('image', this.fileData,'image');
+      }
       var fields=[];
       this.Selected_Category.fields.forEach(element => {
         var e ={title:element.title,icon:element.icon,value:values[element.title]};
@@ -98,9 +122,18 @@ export class PostComponent implements OnInit {
       });
       dataa.append('fields',JSON.stringify(fields));
       this.homeService.AddPost(dataa,this.fileData)
-      .subscribe(val=>{this.loading=false;this.posted=true; console.log("posted="+val);})
+      .subscribe(val=>{
+        this.loading=false;this.posted=true; console.log("posted="+val);
+      })
   }
   }
+
+
+
+  
+
+
+  
   fileProgress(fileInput: any) {
     this.fileData = <File>fileInput.target.files[0];
     if(this.fileData.size > 2000000)

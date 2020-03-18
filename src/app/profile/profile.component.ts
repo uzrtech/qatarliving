@@ -24,6 +24,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.UserSub = this.ProfileService.GetUserU.subscribe(data=>{this.User=data;})
     this.ProfileService.GetUserData();
     this.User=this.ProfileService.GetUser();
+    console.log(this.User);
+    
     
     // var id = localStorage.getItem('_id');
     // this.http.post<{message:String, data:String}>(this.url+"/api/getuser",{_id: id}).subscribe(data=>{

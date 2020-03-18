@@ -8,27 +8,13 @@ import { environment } from 'src/environments/environment';
 })
 export class ProfileService implements OnInit {
   constructor(private http: HttpClient,) { }
-
   url = environment.baseUrl;
   User;
   UserSub= new BehaviorSubject<String>('');
   GetUserU = this.UserSub.asObservable();
-  ngOnInit() {
-    console.log('service onit');
-    this.GetUserData();
-  }
+  ngOnInit() {this.GetUserData();}
   GetUser(){return this.User};
-  //GetUserU(){return this.UserSub.asObservable()};
-
-  GetUserData(){
-    console.log("GetuserData");
-    
-    var id = localStorage.getItem('_id');
-    this.http.post<{message:String, data:String}>(this.url+"/api/getuser",{_id: id}).subscribe(data=>{
-      // this.User=data.data;s
-      console.log('data recived');
-      console.log(data.data);
-      this.UserSub.next(data.data);
-    })
+  UpdateUser(User){this.User=User;this.UserSub.next(User)};
+  GetUserData(){var id = localStorage.getItem('_id');this.http.post<{message:String, data:String}>(this.url+"/api/getuser",{_id: id}).subscribe(data=>{this.UserSub.next(data.data);this.User=data.data;})
   }
 }

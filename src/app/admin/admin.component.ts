@@ -11,6 +11,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class AdminComponent implements OnInit, OnDestroy {
   url = environment.baseUrl;
   notifications;
+  userDrop =false;
+  notiDrop=false;
   constructor(private http: HttpClient, private Router: Router) { }
   ngOnInit() {
     this.http.get<{message:string, data:string}>(this.url+'/api/notifications').subscribe(res=>{

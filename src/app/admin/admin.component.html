@@ -43,7 +43,7 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown hidden-caret">
-                        <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle"  id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-envelope"></i>
                         </a>
                         <ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
@@ -77,16 +77,16 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown hidden-caret">
-                        <a class="nav-link dropdown-toggle" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" (click)="notiDrop = !notiDrop" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell"></i>
                             <span class="notification">4</span>
                         </a>
-                        <ul *ngIf="notifications" class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
+                        <ul *ngIf="notifications" class="dropdown-menu notif-box animated fadeIn" [ngClass]="{'active':notiDrop }" aria-labelledby="notifDropdown">
                             <li>
                                 <div class="dropdown-title">You have {{notifications.length}} notification</div>
                             </li>
                             <li>
-                                <div  class="notif-scroll scrollbar-outer">
+                                <div  style="overflow: auto;"  class="notif-scroll scrollbar-outer">
                                     <div class="notif-center">
                                         <a *ngFor="let noti of notifications">
                                             <div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
@@ -107,12 +107,12 @@
                     </li>
              
                     <li class="nav-item dropdown hidden-caret">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" aria-expanded="false">
+                        <a class="dropdown-toggle profile-pic" (click)="userDrop = !userDrop" >
                             <div class="avatar-sm">
                                 <img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
                             </div>
                         </a>
-                        <ul class="dropdown-menu dropdown-user animated fadeIn">
+                        <ul class="dropdown-menu dropdown-user animated fadeIn" [ngClass]="{'active':userDrop }">
                             <div class="dropdown-user-scroll scrollbar-outer">
                                 <li>
                                     <div class="user-box">

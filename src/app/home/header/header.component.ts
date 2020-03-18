@@ -11,27 +11,29 @@ import { HomeService } from 'src/app/home.service';
 export class HeaderComponent implements OnInit {
   mobileQuery: MediaQueryList;
   Categories;
+  User;
   NewsCategories;
-
   private _mobileQueryListener: () => void;
-
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private HomeService:HomeService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
-
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   } 
-
   ngOnInit() {
     this.HomeService.GetCategories().subscribe(Cats=>{
       this.Categories = Cats.data;
       this.NewsCategories= Cats.newsCategories;
       console.log(this.NewsCategories);
-      
       console.log(this.Categories);
+    })
+    this.HomeService.GetUser().subscribe(user=>{
+      this.User= user.data;
+      console.log('this.User');
+      console.log(this.User);
+      
     })
   }
 

@@ -8,7 +8,7 @@
     <div class="header clearfix">
     <h2 *ngIf="User">{{User.name}}</h2>
     <h4>Real Estate Agent</h4>
-    <img src="assets/img/profile_cover.jpg" alt="avatar" class="img-fluid profile-img">
+    <img [src]="User.profile_pic" alt="avatar" class="img-fluid profile-img">
     </div>
     
     <div class="detail clearfix">
@@ -27,6 +27,11 @@
     <a routerLink='/profile/posts'>
     <i class="lni-home"></i>My Posts
     </a>
+    </li>
+    <li *ngIf="User!=undefined && User.showroom.length>0" >
+        <a routerLink='/profile/showroom'>
+        <i class="lni-home"></i>Showroom
+        </a>
     </li>
     <!-- <li>
     <a href="favorited-properties.html">

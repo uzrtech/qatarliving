@@ -58,8 +58,9 @@
     <td>{{post.category}}</td>
     <td>{{post.date | date:'mediumDate'}}</td>
     <td class="rating"><span>4.3</span></td>
-    <td class="status"><span class=" active">Active</span></td>
-    <td class="edit"><a (click)="posts.splice(posts.indexOf(post),1)"><span class="lni-trash text-danger"></span></a></td>
+    <td class="edit">
+        <a class="btn btn-link btn-primary" [routerLink]="['/profile/post', post._id ]"><i class='lni lni-pencil-alt'></i></a>
+        <a class="btn btn-link btn-danger" (click)="DeletePost(post)"><i class='lni lni-trash'></i></a></td>
     </tr>
    
     </tbody>

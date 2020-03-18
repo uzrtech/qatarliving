@@ -1,0 +1,34 @@
+<div class="dashborad-box">
+    <div class="listing-container list-layout">
+        <div *ngIf="Post" class="">
+            <div class="">
+                <div class="">
+                    <div class="col">
+                        <div class="item-thumb">
+                            <a class="hover-effect" href="property.html">
+                                <img class="img-fluid" [src]="Post.image" alt="">
+                            </a>
+                            <div class="label-inner">
+                                <button class="btn btn-link">Change</button>
+                                <!-- <span class="label-status label bg-red">{{Post.category}}</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h3 class="property-title"><a href="property.html">{{Post.title}}</a></h3>
+                        <div class="item-body">
+                            <div class="adderess"><i class="lni-map-marker"></i> Drive Street, Los Angeles, US</div>
+                            <div *ngFor="let field of Post.fields" class="adderess"><i [class]="field.icon"></i>{{field.value}}</div>
+                            <div class="pricin-list">
+                                <div class="property-price">
+                                <span>{{Post.price}}</span>
+                                </div>
+                            <p><span>4 bds</span> . <span>4 ba</span> . <span>2500 Sqft</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,10 +7,10 @@
                         <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
                         <h5 class="text-white op-7 mb-2">Free Bootstrap 4 Admin Dashboard</h5>
                     </div>
-                    <div class="ml-md-auto py-2 py-md-0">
+                    <!-- <div class="ml-md-auto py-2 py-md-0">
                         <a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
                         <a href="#" class="btn btn-secondary btn-round">Add Customer</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -41,7 +41,6 @@
                                     </form>
                                 </div>
                             </div>
-
                             <div class="col-lg-8 col-md-12 col-xs-12">
                                 <div class="">
                                     <h3 class="sidebar-title">Add Post</h3>
@@ -86,30 +85,30 @@
                                         </form>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
 
-
-
-                                    <div class="widget">
-                                        <h3 class="sidebar-title">Posts</h3>
-                                        <div class="search-blog-input m-1">
-                                            <div class="input">
-                                                <input class="form-control" type="text" placeholder="Type and hit enter" value="">
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div *ngFor="let n of News" class="media">
-                                          <img class="d-flex align-self-start" src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
-                                          <div class="media-body pl-3">
-                                            <div class="price">{{n.title}}</div>
-                                            <div class="address">{{n.des}}</div>
-                                            <div class="stats">{{n.date | date}}
-                                            </div>
-                                            <div class="address">4062 Walnut Hill Drive Cincinnati</div>
-                                           <button (click)="DelNews(n)" class="btn btn-link btn-danger float-right">Delete</button>
-                                          </div>
+                        <div fxLayout="row" fxLayoutAlign="center start">
+                            <div class="widget">
+                                <h3 class="sidebar-title">Posts</h3>
+                                <div class="search-blog-input m-1">
+                                    <div class="input">
+                                        <input class="form-control" [(ngModel)]="searchValue" type="text" placeholder="Type and hit enter" value="">
                                     </div>
                                 </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div *ngFor="let n of News | newspipe: searchValue: 'title'" class="media">
+                                  <img class="d-flex align-self-start" src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
+                                  <div class="media-body pl-3">
+                                    <div class="price">{{n.title}}</div>
+                                    <div class="address">{{n.des}}</div>
+                                    <div class="stats">{{n.date | date}}
+                                    </div>
+                                    <div class="address">4062 Walnut Hill Drive Cincinnati</div>
+                                   <button (click)="DelNews(n)" class="btn btn-link btn-danger float-right">Delete</button>
+                                  </div>
                             </div>
                         </div>
                     </div>

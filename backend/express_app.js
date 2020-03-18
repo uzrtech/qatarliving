@@ -77,6 +77,7 @@ app.post("/api/user/register",authController.UserRegister);
 
 app.post("/api/post",upload.single('image'),homeController.AddPost);
 app.get("/api/posts",homeController.GetPosts);
+app.post("/api/post/delete",homeController.DeletePost);
 app.post("/api/singlepost",homeController.GetPost);
 app.post("/api/posts/category",homeController.GetPostsBy);
 app.get("/api/categories",homeController.Categories);
@@ -84,7 +85,7 @@ app.get("/api/notifications",homeController.Notifications);
 app.post("/api/categories/update",homeController.CategoriesUpdate);
 app.post("/api/categories/add",homeController.CategoriesAdd);
 app.post("/api/getuser",homeController.GetUser);
-app.post("/api/updateuser",homeController.UpdateUser);
+app.post("/api/updateuser",upload.single('image'),homeController.UpdateUser);
 app.post("/api/updateuserpass",homeController.UpdateUserPass);
 
 //news
@@ -98,6 +99,11 @@ app.post("/api/news/cate/delete",newsController.DeleteCate);
 
 
 
+
+app.post("/api/showroom/add",upload.single('image'),homeController.CreateShowroom);
+app.post("/api/showroom/update",upload.single('image'),homeController.UpdateShowroom);
+app.post("/api/showroom/post/add",upload.single('image'),homeController.CreateShowroomPost);
+app.post("/api/showroom",homeController.GetShowroom);
 
 
 app.use('*',(req,res)=>{

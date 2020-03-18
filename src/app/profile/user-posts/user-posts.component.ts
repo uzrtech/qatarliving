@@ -23,8 +23,6 @@ export class UserPostsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.User=this.ProfileService.GetUser();
     this.UserSub = this.ProfileService.GetUserU.subscribe(data=>{
-      console.log(data);
-      
       this.User=data;this.posts=this.User.Posts;
       console.log(this.posts);
     }

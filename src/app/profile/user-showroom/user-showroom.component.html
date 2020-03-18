@@ -1,0 +1,74 @@
+<div class="dashborad-box">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="heading">Showrooms</h3>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-link float-right" [routerLink]="['/profile/showroom/edit','']"> Add </button>
+        </div>
+    </div>
+    <div class="section-body listing-table">
+    <div class="table-responsive">
+    <table class="table table-striped">
+    <thead>
+    <tr>
+    <th>Showroom Name</th>
+    <th>City</th>
+    <th>Address</th>
+    <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let post of User.showroom">
+    <td>{{post.title}}</td>
+    <td>{{post.city}}</td>
+    <td>{{post.address}}</td>
+    <td class="edit">
+        <a class="btn btn-link btn-primary" [routerLink]="['/profile/showroom/edit', post._id ]"><i class='lni lni-pencil-alt'></i></a>
+        <a class="btn btn-link btn-danger" (click)="User.showroom(User.showroom.indexOf(post),1)"><i class='lni lni-trash'></i></a></td>
+    </tr>
+   
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+
+
+
+<div class="dashborad-box">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="heading">Posts</h3>
+        </div>
+    </div>
+
+    <div class="section-body listing-table">
+        <div class="table-responsive">
+        <table class="table table-striped">
+        <thead>
+        <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let post of Showroom_Posts">
+        <td>{{post.title}}</td>
+        <td>{{post.des}}</td>
+        <td>{{post.type}}</td>
+        <td>{{post.price}}</td>
+        <td class="edit">
+            <a class="btn btn-link btn-primary" [routerLink]="['/profile/showroom/edit', post._id ]"><i class='lni lni-pencil-alt'></i></a>
+            <a class="btn btn-link btn-danger" (click)="DeletePost(post)"><i class='lni lni-trash'></i></a></td>
+        </tr>
+       
+        </tbody>
+        </table>
+        </div>
+        </div>
+</div>

@@ -1,3 +1,4 @@
+import { ShowroomsComponent } from './home/showrooms/showrooms.component';
 import { SearchFieldsComponent } from './admin/search-fields/search-fields.component';
 import { AdminNewsComponent } from './admin/admin-news/admin-news.component';
 import { NewsComponent } from './home/news/news.component';
@@ -37,14 +38,15 @@ const routes: Routes = [
   {path:"", component:HeaderComponent, children:[
     {path:'', component: HomeComponent},
     // {path:'profile', component: UserProfileComponent},
+    {path:'search/Vehicles/Showrooms', component:ShowroomsComponent},
+    {path:'search/Vehicles/Showroom', component:ShowroomsComponent},
     {path:'search/:category/:sub', component:SearchComponent},
     {path:'search/:category', component:SearchComponent},
     {path:'news', component:NewsComponent},
     {path:'single/:id', component:SingleAdComponent},
     {path:'post', component:PostComponent,data: { expectedRole: 'user'},canActivate: [AuthGuard]},
-    { path: 'profile', canActivate:[AuthGuard],data: { expectedRole: 'user'}, loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
+    {path: 'profile', canActivate:[AuthGuard],data: { expectedRole: 'user'}, loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
   ]},
-  
   
 ];
 @NgModule({

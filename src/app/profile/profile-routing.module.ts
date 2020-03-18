@@ -1,3 +1,4 @@
+import { UserShowroomComponent } from './user-showroom/user-showroom.component';
 import { UserPostsComponent } from './user-posts/user-posts.component';
 import { UserPasswordChangeComponent } from './user-password-change/user-password-change.component';
 import { UserDashboardProfileComponent } from './user-dashboard-profile/user-dashboard-profile.component';
@@ -7,12 +8,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProfileComponent } from './profile.component';
 import { UserAddPostComponent } from './user-add-post/user-add-post.component';
+import { UserSinglePostComponent } from './user-single-post/user-single-post.component';
+import { ShowroomEditComponent } from './user-showroom/showroom-edit/showroom-edit.component';
 
 const routes: Routes = [{ path: '', component: ProfileComponent ,children:[
   { path:'', component:UserDashboardComponent},
   { path:'settings', component:UserDashboardProfileComponent},
   { path:'add', component:UserAddPostComponent},
-  { path:'posts', component:UserPostsComponent},
+  { path:'showroom', component:UserShowroomComponent},
+  { path:'showroom/edit/:postid', component:ShowroomEditComponent},
+  { path:'post/:postid', component:UserSinglePostComponent},
   { path:'changepassword', component:UserPasswordChangeComponent},
 ]}];
 

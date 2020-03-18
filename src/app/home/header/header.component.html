@@ -5,8 +5,18 @@
     </mat-toolbar> -->
     <mat-sidenav-container class="example-sidenav-container">
       <mat-sidenav #snav mode="over" style="width:300px" [fixedInViewport]="true" fixedTopGap="0">
-        <div *ngFor="let cat of Categories" class="m-3">
-          <ul class="list-group">
+        <div style="display: flex; flex-direction: column;">
+          <div style="display: block;" class="client-info">
+            <div class="img-thumb">
+            <!-- <img [src]="User.image" alt=""> -->
+            </div>
+            <div class="info-text">
+            <!-- <h2><a href="#">{{User.name}}</a></h2>
+            <h4><a href="#">{{User.email}}</a></h4> -->
+            </div>
+          </div>
+
+          <ul *ngFor="let cat of Categories" class="list-group">
             <li class="list-group-item head">{{cat.name}}</li>
             <li *ngFor="let sub of cat.cat" class="list-group-item">{{sub.name}}</li>
           </ul>
