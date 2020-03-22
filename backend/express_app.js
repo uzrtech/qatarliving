@@ -8,12 +8,11 @@ const Cat = require('./models/category-model');
 var cors = require('cors')
 app.use(cors())
 
-
-
 // Include controllers from Controllers folder
 const authController = require('./controllers/auth-controller');
 const homeController = require('./controllers/home-controller');
 const newsController = require('./controllers/news-controller');
+const pageController = require('./controllers/page-controller');
 
 // Include Multer to handle file upload
 const multer = require('multer');
@@ -24,27 +23,6 @@ var storage = multer.diskStorage({
     cb(null, Date.now()+'-'+name);}
 });
 var upload = multer({ storage: storage });
-
-
-
-
-
-
-
-
-
-// var catss = new Cat({
-//     name : "Items",
-//     cat:[{
-//       name:"Clothing",
-//       sub:["Jewelry", "Clothing"]
-//     },{
-//       name:"Accessories",
-//       sub:["Mobile Phones", "Tablets"]
-//     }]
-//   });
-// catss.save();
-
 
 // Body Parser to get data from Request from Front End
 app.use(bodyParser.json());
@@ -97,6 +75,17 @@ app.post("/api/news/delete",newsController.DeleteNews);
 app.post("/api/news/cate/add",newsController.AddCate);
 app.post("/api/news/cate/delete",newsController.DeleteCate);
 
+
+//pages
+app.get("/api/pages",pageController.GetPages);
+app.post("/api/page",pageController.GetPage);
+app.post("/api/page/add",upload.single('image'),pageController.AddPage);
+app.post("/api/page/post",upload.single('image'),pageController.AddPost);
+app.post("/api/page/update",upload.single('image'),pageController.UpdatePage);
+app.post("/api/page/delete",pageController.DeletePage);
+app.get("/api/page/cate",pageController.GetPageCategory);
+app.post("/api/page/cate/add",pageController.AddPageCategory);
+app.post("/api/page/cate/delete",pageController.DeletePageCateogry);
 
 
 

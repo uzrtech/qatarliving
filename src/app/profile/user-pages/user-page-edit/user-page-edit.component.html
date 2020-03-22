@@ -1,0 +1,68 @@
+
+
+<div class="dashborad-box">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="heading">Page</h3>
+        </div>
+    </div>
+    <div class="edit">
+    <form [formGroup]="ProfileForm" (ngSubmit)="formSubmit(ProfileForm.value)">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12" >
+                <h3>Choose File</h3>      
+                <div class="team-img d-flex image-preview" *ngIf="previewUrl">
+                  <img class="img-fluid image-preview" alt="Responsive image" [src]="previewUrl" />                 
+                </div>      
+                <div class="form-group">
+                </div>
+                <div *ngIf="fileUploadProgress">
+                    Upload progress: {{ fileUploadProgress }}
+                </div>
+                <div class="mb-3" *ngIf="uploadedFilePath">
+                    {{uploadedFilePath}}
+                </div>
+                <div class="form-group">
+                  <input type="file" value="Choose File" name="image" (change)="fileProgress($event)" />
+                </div>
+              </div>
+              <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input formControlName='title' type="text" class="form-control" placeholder="Page Title">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select formControlName='category' class="form-control">
+                                <option value="0" >Select Category</option>
+                                <option *ngFor="let cat of PageCategories" [value]="cat.category">{{cat.category}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input formControlName="city" type="text" class="form-control" placeholder="City">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea formControlName="des" class="form-control" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <button class="btn btn-common float-right" type="submit">Save</button>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </form>
+    </div>
+    </div>

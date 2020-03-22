@@ -5,6 +5,7 @@ const User = require('../models/user_model');
 const NewsC = require('../models/news-category-model');
 const date = new Date();
 const Cat = require('../models/category-model');
+const Page = require('../models/page-model');
 const Showroom = require('../models/showroom-model');
 const Notification = require('../models/notification-model');
 
@@ -34,6 +35,16 @@ exports.AddPost = (req ,res ,next)=>{
         Showroom.findByIdAndUpdate(reqbody.showroom,{$push:{posts:_post._id}},(err,_showroom)=>{
         })
       }
+
+      if(reqbody.page){
+        console.log('page');
+        console.log(_post);
+        
+        Page.findByIdAndUpdate(reqbody.page,{$push:{posts:_post._id}},(err,_page)=>{
+        })
+      }
+
+
     });
     res.status(200).json({message:"post Done"});
   }).catch(err=>{console.log(err);
@@ -96,7 +107,7 @@ exports.DeletePost =  (req ,res)=>{
 };
 
 exports.GetUser =  (req ,res)=>{
-  User.findById(req.body._id).populate('Posts').populate('showroom').exec(function (err, _data) {
+  User.findById(req.body._id).populate('Posts').populate('showroom').populate('page').exec(function (err, _data) {
     res.status(200).json({message:"User", data:_data });
   });
 };

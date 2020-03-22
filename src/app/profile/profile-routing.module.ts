@@ -1,3 +1,5 @@
+import { UserPageEditComponent } from './user-pages/user-page-edit/user-page-edit.component';
+import { UserPagesComponent } from './user-pages/user-pages.component';
 import { UserShowroomComponent } from './user-showroom/user-showroom.component';
 import { UserPostsComponent } from './user-posts/user-posts.component';
 import { UserPasswordChangeComponent } from './user-password-change/user-password-change.component';
@@ -16,7 +18,10 @@ const routes: Routes = [{ path: '', component: ProfileComponent ,children:[
   { path:'settings', component:UserDashboardProfileComponent},
   { path:'add', component:UserAddPostComponent},
   { path:'showroom', component:UserShowroomComponent},
+  { path:'pages', component:UserPagesComponent},
   { path:'showroom/edit/:postid', component:ShowroomEditComponent},
+  { path:'pages/edit/:pageid', component:UserPageEditComponent},
+  { path:'pages/edit', component:UserPageEditComponent},
   { path:'post/:postid', component:UserSinglePostComponent},
   { path:'changepassword', component:UserPasswordChangeComponent},
 ]}];

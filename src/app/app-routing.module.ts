@@ -46,7 +46,9 @@ const routes: Routes = [
     {path:'single/:id', component:SingleAdComponent},
     {path:'post', component:PostComponent,data: { expectedRole: 'user'},canActivate: [AuthGuard]},
     {path: 'profile', canActivate:[AuthGuard],data: { expectedRole: 'user'}, loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
+    { path: 'pages', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
   ]},
+  
   
 ];
 @NgModule({

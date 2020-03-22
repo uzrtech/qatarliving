@@ -10,6 +10,7 @@ const UserSchema = mongoose.Schema({
     email :{ type:String, require: true , unique : true},
     password :{ type : String, require : true},
     showroom :[{type:mongoose.Schema.Types.ObjectId, ref:'Showroom'}],
+    page :[{type:mongoose.Schema.Types.ObjectId, ref:'Page'}],
     profile_pic :{ type : String, default:"http://localhost:8080/uploads/user-default-image-avatar.png"},
 });
 

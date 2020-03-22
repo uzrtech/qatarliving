@@ -1,0 +1,111 @@
+<div class="dashborad-box">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="heading">Pages</h3>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-link float-right" [routerLink]="['/profile/pages/edit','']"> Add </button>
+        </div>
+    </div>
+    <div class="section-body listing-table">
+    <div class="table-responsive">
+    <table class="table table-striped">
+    <thead>
+    <tr>
+    <th>Page Title</th>
+    <th>Category</th>
+    <th>City</th>
+    <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let post of Pages">
+    <td><a (click)="S_page=post" class="btn btn-link btn-primary">{{post.title}}</a></td>
+    <td>{{post.category}}</td>
+    <td>{{post.city}}</td>
+    <td class="edit">
+        <a class="btn btn-link btn-primary" [routerLink]="['/profile/page/edit', post._id ]"><i class='lni lni-pencil-alt'></i></a>
+        <a class="btn btn-link btn-danger" (click)="Deletepage(post)"><i class='lni lni-trash'></i></a></td>
+    </tr>
+   
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+
+    <div class="dashborad-box">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="heading">Add Posts</h3>
+            </div>
+        </div>
+        <form [formGroup]="ProfileForm" (ngSubmit)="formSubmit(ProfileForm.value)">
+            <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input formControlName='title' type="text" class="form-control" placeholder="Page Title">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <textarea formControlName="des" rowspan='4' class="form-control" placeholder="Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12" >    
+                            <div class="team-img d-flex image-preview" *ngIf="previewUrl">
+                              <img class="img-fluid image-preview" alt="Responsive image" style="width: 200px;" [src]="previewUrl" />                 
+                            </div>  
+                            <div class="form-group">
+                              <input type="file" value="Choose File" name="image" (change)="fileProgress($event)" />
+                            </div>
+                          </div>
+                        <div class="col-lg-12">
+                            <button class="btn btn-common float-right" type="submit">Post</button>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </form>
+    </div>
+
+
+
+<div class="dashborad-box">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="heading">Posts</h3>
+        </div>
+    </div>
+
+    <div class="section-body listing-table">
+        <div class="table-responsive">
+        <table class="table table-striped">
+        <thead>
+        <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let post of Pages">
+        <td>{{post.title}}</td>
+        <td>{{post.des}}</td>
+        <td>{{post.type}}</td>
+        <td>{{post.price}}</td>
+        <td class="edit">
+            <a class="btn btn-link btn-primary" [routerLink]="['/profile/showroom/edit', post._id ]"><i class='lni lni-pencil-alt'></i></a>
+            <a class="btn btn-link btn-danger" (click)="DeletePost(post)"><i class='lni lni-trash'></i></a></td>
+        </tr>
+       
+        </tbody>
+        </table>
+        </div>
+        </div>
+</div>
